@@ -1,0 +1,8 @@
+[[entity]]
+
+    [entity.components.SpriteRender]
+    sprite_sheet_name = "game"
+    sprite_number = 11
+
+    [entity.components.Transform]
+    depth = 0.5

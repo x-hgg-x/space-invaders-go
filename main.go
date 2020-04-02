@@ -3,6 +3,7 @@ package main
 import (
 	gs "github.com/x-hgg-x/space-invaders-go/lib/states"
 
+	"github.com/x-hgg-x/goecsengine/loader"
 	er "github.com/x-hgg-x/goecsengine/resources"
 	es "github.com/x-hgg-x/goecsengine/states"
 	"github.com/x-hgg-x/goecsengine/utils"
@@ -12,8 +13,8 @@ import (
 )
 
 const (
-	windowWidth  = 720
-	windowHeight = 600
+	windowWidth  = 1000
+	windowHeight = 800
 )
 
 type mainGame struct {
@@ -40,6 +41,14 @@ func main() {
 
 	// Init screen dimensions
 	world.Resources.ScreenDimensions = &er.ScreenDimensions{Width: windowWidth, Height: windowHeight}
+
+	// Load sprite sheets
+	spriteSheets := loader.LoadSpriteSheets("assets/metadata/spritesheets/spritesheets.toml")
+	world.Resources.SpriteSheets = &spriteSheets
+
+	// Load fonts
+	fonts := loader.LoadFonts("assets/metadata/fonts/fonts.toml")
+	world.Resources.Fonts = &fonts
 
 	ebiten.SetWindowResizable(true)
 	ebiten.SetWindowSize(windowWidth, windowHeight)

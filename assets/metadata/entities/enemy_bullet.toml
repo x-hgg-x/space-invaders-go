@@ -1,0 +1,15 @@
+[[entity]]
+
+    [entity.components.SpriteRender]
+    sprite_sheet_name = "game"
+    sprite_number = 9
+
+    [entity.components.Transform]
+    depth = 0.4
+
+    [entity.components.AnimationControl]
+    sprite_sheet_name = "game"
+    animation_name = "enemy_bullet"
+    end = { type = "Loop" }
+    command = { type = "Start" }
+    rate_multiplier = 1.0

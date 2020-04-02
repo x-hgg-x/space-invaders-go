@@ -1,0 +1,85 @@
+[sprite_sheet.background]
+texture_image = "assets/textures/background.png"
+sprites = [
+    { x = 0, y = 0, width = 1000, height = 800 },
+]
+
+[sprite_sheet.bunker]
+texture_image = "assets/textures/bunker.png"
+sprites = [
+    { x = 0, y = 0, width = 168, height = 120 },
+]
+
+[sprite_sheet.game]
+texture_image = "assets/textures/game.png"
+sprites = [
+    # Alien 1
+    { x = 0,   y = 0,   width = 72, height = 48 }, # Sprite 0
+    { x = 72,  y = 0,   width = 72, height = 48 }, # Sprite 1
+    { x = 144, y = 0,   width = 72, height = 48 }, # Sprite 2
+    # Alien 2
+    { x = 0,   y = 48,  width = 72, height = 48 }, # Sprite 3
+    { x = 72,  y = 48,  width = 72, height = 48 }, # Sprite 4
+    { x = 144, y = 48,  width = 72, height = 48 }, # Sprite 5
+    # Alien 3
+    { x = 0,   y = 96,  width = 72, height = 48 }, # Sprite 6
+    { x = 72,  y = 96,  width = 72, height = 48 }, # Sprite 7
+    { x = 144, y = 96,  width = 72, height = 48 }, # Sprite 8
+    # Enemy bullet
+    { x = 216, y = 0,   width = 12, height = 48 }, # Sprite 9
+    { x = 216, y = 48,  width = 12, height = 48 }, # Sprite 10
+    # Player bullet
+    { x = 219, y = 96,  width = 6,  height = 48 }, # Sprite 11
+    { x = 324, y = 126, width = 96, height = 18 }, # Sprite 12
+    # Alien master
+    { x = 228, y = 0,   width = 96, height = 48 }, # Sprite 13
+    { x = 228, y = 48,  width = 96, height = 48 }, # Sprite 14
+    { x = 228, y = 96,  width = 96, height = 48 }, # Sprite 15
+    # Player
+    { x = 324, y = 0,   width = 96, height = 48 }, # Sprite 16
+    { x = 324, y = 48,  width = 96, height = 48 }, # Sprite 17
+]
+
+[sprite_sheet.game.animations.alien_loop_1]
+time =          [0.0, 0.5, 1.0]
+sprite_number = [    0,   1   ]
+
+[sprite_sheet.game.animations.alien_loop_2]
+time =          [0.0, 0.5, 1.0]
+sprite_number = [    3,   4   ]
+
+[sprite_sheet.game.animations.alien_loop_3]
+time =          [0.0, 0.5, 1.0]
+sprite_number = [    6,   7   ]
+
+[sprite_sheet.game.animations.alien_death_1]
+time =          [0.0, 0.25]
+sprite_number = [    2    ]
+
+[sprite_sheet.game.animations.alien_death_2]
+time =          [0.0, 0.25]
+sprite_number = [    5    ]
+
+[sprite_sheet.game.animations.alien_death_3]
+time =          [0.0, 0.25]
+sprite_number = [    8    ]
+
+[sprite_sheet.game.animations.enemy_bullet]
+time =          [0.0, 0.35,  0.7]
+sprite_number = [    9,    10   ]
+
+[sprite_sheet.game.animations.player_bullet_explosion]
+time =          [0.0,  0.25]
+sprite_number = [    12    ]
+
+[sprite_sheet.game.animations.alien_master_loop]
+time =          [0.0,  0.1,  0.2]
+sprite_number = [    13,   14   ]
+
+[sprite_sheet.game.animations.alien_master_death]
+time =          [0.0,  0.25]
+sprite_number = [    15    ]
+
+[sprite_sheet.game.animations.player_death]
+time =          [0.0,  0.5]
+sprite_number = [    17   ]

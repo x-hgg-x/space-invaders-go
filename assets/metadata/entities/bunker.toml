@@ -1,0 +1,28 @@
+[[entity]]
+
+    [entity.components.SpriteRender]
+    sprite_sheet_name = "bunker"
+    sprite_number = 0
+
+    [entity.components.Transform]
+    translation = { x = 150.0, y = 120.0 }
+
+
+[[entity]]
+
+    [entity.components.SpriteRender]
+    sprite_sheet_name = "bunker"
+    sprite_number = 0
+
+    [entity.components.Transform]
+    translation = { x = 500.0, y = 120.0 }
+
+
+[[entity]]
+
+    [entity.components.SpriteRender]
+    sprite_sheet_name = "bunker"
+    sprite_number = 0
+
+    [entity.components.Transform]
+    translation = { x = 850.0, y = 120.0 }
