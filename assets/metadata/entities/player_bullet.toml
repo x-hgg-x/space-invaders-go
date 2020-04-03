@@ -5,4 +5,9 @@
     sprite_number = 11
 
     [entity.components.Transform]
+    translation = { y = 82.0 }
     depth = 0.5
+
+    [entity.components.PlayerBullet]
+    height = 48.0
+    velocity = 450.0

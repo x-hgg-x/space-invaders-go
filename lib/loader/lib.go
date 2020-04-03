@@ -12,7 +12,9 @@ import (
 )
 
 type gameComponentList struct {
-	Player *gc.Player
+	Player       *gc.Player
+	PlayerBullet *gc.PlayerBullet
+	Deleted      *gc.Deleted
 }
 
 type entity struct {

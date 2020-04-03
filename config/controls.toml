@@ -2,6 +2,9 @@
 mouse_axis = { axis = 0 }
 # emulated = { pos = { key = "Right" }, neg = { key = "Left" } }
 
+[controls.actions.Shoot]
+combinations = [[{ mouse_button = "MouseButtonLeft" }], [{ key = "Z" }]]
+
 
 # Usage
 

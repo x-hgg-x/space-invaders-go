@@ -66,6 +66,10 @@ func (st *GameplayState) OnStop(world w.World) {
 // Update method
 func (st *GameplayState) Update(world w.World, screen *ebiten.Image) states.Transition {
 	g.MovePlayerSystem(world)
+	g.ShootPlayerBulletSystem(world)
+	g.MoveBulletSystem(world)
+	g.CollisionSystem(world)
+	g.DeleteSystem(world)
 
 	if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {
 		return states.Transition{Type: states.TransPush, NewStates: []states.State{&PauseMenuState{}}}
