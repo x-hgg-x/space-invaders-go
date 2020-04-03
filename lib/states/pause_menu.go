@@ -3,8 +3,9 @@ package states
 import (
 	"fmt"
 
+	"github.com/x-hgg-x/space-invaders-go/lib/loader"
+
 	ecs "github.com/x-hgg-x/goecs"
-	"github.com/x-hgg-x/goecsengine/loader"
 	"github.com/x-hgg-x/goecsengine/states"
 	w "github.com/x-hgg-x/goecsengine/world"
 
@@ -65,7 +66,7 @@ func (st *PauseMenuState) OnResume(world w.World) {}
 
 // OnStart method
 func (st *PauseMenuState) OnStart(world w.World) {
-	st.pauseMenu = loader.LoadEntities("assets/metadata/entities/ui/pause_menu.toml", world, nil)
+	st.pauseMenu = loader.LoadEntities("assets/metadata/entities/ui/pause_menu.toml", world)
 }
 
 // OnStop method

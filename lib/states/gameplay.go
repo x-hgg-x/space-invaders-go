@@ -1,9 +1,11 @@
 package states
 
 import (
+	"github.com/x-hgg-x/space-invaders-go/lib/loader"
+	g "github.com/x-hgg-x/space-invaders-go/lib/systems"
+
 	ecs "github.com/x-hgg-x/goecs"
 	ec "github.com/x-hgg-x/goecsengine/components"
-	"github.com/x-hgg-x/goecsengine/loader"
 	"github.com/x-hgg-x/goecsengine/states"
 	w "github.com/x-hgg-x/goecsengine/world"
 
@@ -19,11 +21,11 @@ type GameplayState struct {
 // OnStart method
 func (st *GameplayState) OnStart(world w.World) {
 	// Load game and ui entities
-	loader.LoadEntities("assets/metadata/entities/background.toml", world, nil)
-	loader.LoadEntities("assets/metadata/entities/level.toml", world, nil)
-	loader.LoadEntities("assets/metadata/entities/bunker.toml", world, nil)
-	loader.LoadEntities("assets/metadata/entities/ui/score.toml", world, nil)
-	loader.LoadEntities("assets/metadata/entities/ui/life.toml", world, nil)
+	loader.LoadEntities("assets/metadata/entities/background.toml", world)
+	loader.LoadEntities("assets/metadata/entities/level.toml", world)
+	loader.LoadEntities("assets/metadata/entities/bunker.toml", world)
+	loader.LoadEntities("assets/metadata/entities/ui/score.toml", world)
+	loader.LoadEntities("assets/metadata/entities/ui/life.toml", world)
 
 	ebiten.SetCursorMode(ebiten.CursorModeHidden)
 }
@@ -63,6 +65,8 @@ func (st *GameplayState) OnStop(world w.World) {
 
 // Update method
 func (st *GameplayState) Update(world w.World, screen *ebiten.Image) states.Transition {
+	g.MovePlayerSystem(world)
+
 	if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {
 		return states.Transition{Type: states.TransPush, NewStates: []states.State{&PauseMenuState{}}}
 	}

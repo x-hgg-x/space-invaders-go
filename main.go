@@ -1,6 +1,8 @@
 package main
 
 import (
+	gc "github.com/x-hgg-x/space-invaders-go/lib/components"
+	gr "github.com/x-hgg-x/space-invaders-go/lib/resources"
 	gs "github.com/x-hgg-x/space-invaders-go/lib/states"
 
 	"github.com/x-hgg-x/goecsengine/loader"
@@ -37,10 +39,17 @@ func (game *mainGame) Update(screen *ebiten.Image) error {
 }
 
 func main() {
-	world := w.InitWorld(nil, nil)
+	world := w.InitWorld(&gc.Components{}, nil)
 
 	// Init screen dimensions
 	world.Resources.ScreenDimensions = &er.ScreenDimensions{Width: windowWidth, Height: windowHeight}
+
+	// Load controls
+	axes := []string{gr.PlayerAxis}
+	actions := []string{}
+	controls, inputHandler := loader.LoadControls("config/controls.toml", axes, actions)
+	world.Resources.Controls = &controls
+	world.Resources.InputHandler = &inputHandler
 
 	// Load sprite sheets
 	spriteSheets := loader.LoadSpriteSheets("assets/metadata/spritesheets/spritesheets.toml")

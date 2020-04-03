@@ -8,6 +8,9 @@
     [entity.components.Transform]
     translation = { x = 500.0, y = 30.0 }
 
+    [entity.components.Player]
+    width = 96.0
+
 
 # Game over line
 [[entity]]
