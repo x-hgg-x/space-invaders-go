@@ -13,7 +13,11 @@ import (
 
 type gameComponentList struct {
 	Player       *gc.Player
-	PlayerBullet *gc.PlayerBullet
+	Enemy        *gc.Enemy
+	Controllable *gc.Controllable
+	Alien        *gc.Alien
+	Bunker       *gc.Bunker
+	Bullet       *gc.Bullet
 	Deleted      *gc.Deleted
 }
 

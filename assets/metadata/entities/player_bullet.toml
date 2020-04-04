@@ -8,6 +8,9 @@
     translation = { y = 82.0 }
     depth = 0.5
 
-    [entity.components.PlayerBullet]
+    [entity.components.Player]
+
+    [entity.components.Bullet]
+    width = 6.0
     height = 48.0
     velocity = 450.0

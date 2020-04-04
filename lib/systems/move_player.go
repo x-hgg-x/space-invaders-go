@@ -13,12 +13,12 @@ import (
 	"github.com/hajimehoshi/ebiten"
 )
 
-// MovePlayerSystem moves player
+// MovePlayerSystem moves player controllable sprite
 func MovePlayerSystem(world w.World) {
 	gameComponents := world.Components.Game.(*gc.Components)
 
-	world.Manager.Join(gameComponents.Player, world.Components.Engine.Transform).Visit(ecs.Visit(func(entity ecs.Entity) {
-		player := gameComponents.Player.Get(entity).(*gc.Player)
+	world.Manager.Join(gameComponents.Player, gameComponents.Controllable, world.Components.Engine.Transform).Visit(ecs.Visit(func(entity ecs.Entity) {
+		playerControllable := gameComponents.Controllable.Get(entity).(*gc.Controllable)
 		playerTransform := world.Components.Engine.Transform.Get(entity).(*ec.Transform)
 
 		screenWidth := float64(world.Resources.ScreenDimensions.Width)
@@ -31,8 +31,8 @@ func MovePlayerSystem(world w.World) {
 			playerX += axisValue * screenWidth / ebiten.DefaultTPS / 4
 		}
 
-		minValue := player.Width / 2
-		maxValue := float64(world.Resources.ScreenDimensions.Width) - player.Width/2
+		minValue := playerControllable.Width / 2
+		maxValue := float64(world.Resources.ScreenDimensions.Width) - playerControllable.Width/2
 		playerTransform.Translation.X = math.Min(math.Max(playerX, minValue), maxValue)
 	}))
 }

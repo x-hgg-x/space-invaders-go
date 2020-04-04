@@ -9,7 +9,10 @@
     translation = { x = 500.0, y = 30.0 }
 
     [entity.components.Player]
-    width = 96.0
+
+    [entity.components.Controllable]
+    width = 90.0
+    height = 48.0
 
 
 # Game over line
@@ -28,60 +31,80 @@
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 95.0, y = 400.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 185.0, y = 400.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 275.0, y = 400.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 365.0, y = 400.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 455.0, y = 400.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 545.0, y = 400.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 635.0, y = 400.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 725.0, y = 400.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 815.0, y = 400.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 905.0, y = 400.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 
 [[entity]]
@@ -89,60 +112,80 @@ AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1"
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 95.0, y = 472.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 185.0, y = 472.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 275.0, y = 472.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 365.0, y = 472.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 455.0, y = 472.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 545.0, y = 472.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 635.0, y = 472.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 725.0, y = 472.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 815.0, y = 472.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 0 }
 Transform = { translation = { x = 905.0, y = 472.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 72.0, height = 48.0 }
 
 
 [[entity]]
@@ -150,60 +193,80 @@ AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_1"
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 95.0, y = 544.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 185.0, y = 544.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 275.0, y = 544.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 365.0, y = 544.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 455.0, y = 544.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 545.0, y = 544.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 635.0, y = 544.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 725.0, y = 544.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 815.0, y = 544.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 905.0, y = 544.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 
 [[entity]]
@@ -211,60 +274,80 @@ AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2"
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 95.0, y = 616.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 185.0, y = 616.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 275.0, y = 616.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 365.0, y = 616.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 455.0, y = 616.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 545.0, y = 616.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 635.0, y = 616.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 725.0, y = 616.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 815.0, y = 616.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 3 }
 Transform = { translation = { x = 905.0, y = 616.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 66.0, height = 48.0 }
 
 
 [[entity]]
@@ -272,57 +355,77 @@ AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_2"
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 6 }
 Transform = { translation = { x = 95.0, y = 688.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_3", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 48.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 6 }
 Transform = { translation = { x = 185.0, y = 688.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_3", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 48.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 6 }
 Transform = { translation = { x = 275.0, y = 688.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_3", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 48.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 6 }
 Transform = { translation = { x = 365.0, y = 688.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_3", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 48.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 6 }
 Transform = { translation = { x = 455.0, y = 688.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_3", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 48.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 6 }
 Transform = { translation = { x = 545.0, y = 688.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_3", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 48.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 6 }
 Transform = { translation = { x = 635.0, y = 688.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_3", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 48.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 6 }
 Transform = { translation = { x = 725.0, y = 688.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_3", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 48.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 6 }
 Transform = { translation = { x = 815.0, y = 688.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_3", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 48.0, height = 48.0 }
 
 [[entity]]
 [entity.components]
 SpriteRender = { sprite_sheet_name = "game", sprite_number = 6 }
 Transform = { translation = { x = 905.0, y = 688.0 } }
 AnimationControl = { sprite_sheet_name = "game", animation_name = "alien_loop_3", end = { type = "Loop" }, command = { type = "Start" }, rate_multiplier = 1.0 }
+Enemy = {}
+Alien = { width = 48.0, height = 48.0 }

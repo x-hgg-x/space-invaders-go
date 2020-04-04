@@ -14,9 +14,9 @@ import (
 func MoveBulletSystem(world w.World) {
 	gameComponents := world.Components.Game.(*gc.Components)
 
-	world.Manager.Join(gameComponents.PlayerBullet, world.Components.Engine.Transform).Visit(ecs.Visit(func(entity ecs.Entity) {
-		playerBulletVelocity := gameComponents.PlayerBullet.Get(entity).(*gc.PlayerBullet).Velocity
-		playerBulletTransform := world.Components.Engine.Transform.Get(entity).(*ec.Transform)
-		playerBulletTransform.Translation.Y += playerBulletVelocity / ebiten.DefaultTPS
+	world.Manager.Join(gameComponents.Bullet, world.Components.Engine.Transform).Visit(ecs.Visit(func(entity ecs.Entity) {
+		bulletVelocity := gameComponents.Bullet.Get(entity).(*gc.Bullet).Velocity
+		bulletTransform := world.Components.Engine.Transform.Get(entity).(*ec.Transform)
+		bulletTransform.Translation.Y += bulletVelocity / ebiten.DefaultTPS
 	}))
 }

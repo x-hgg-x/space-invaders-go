@@ -13,3 +13,9 @@
     end = { type = "Loop" }
     command = { type = "Start" }
     rate_multiplier = 1.0
+
+    [entity.components.Enemy]
+
+    [entity.components.Alien]
+    width = 96.0
+    height = 42.0

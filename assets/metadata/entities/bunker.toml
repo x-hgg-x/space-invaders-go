@@ -7,6 +7,8 @@
     [entity.components.Transform]
     translation = { x = 150.0, y = 120.0 }
 
+    [entity.components.Bunker]
+
 
 [[entity]]
 
@@ -17,6 +19,8 @@
     [entity.components.Transform]
     translation = { x = 500.0, y = 120.0 }
 
+    [entity.components.Bunker]
+
 
 [[entity]]
 
@@ -26,3 +30,5 @@
 
     [entity.components.Transform]
     translation = { x = 850.0, y = 120.0 }
+
+    [entity.components.Bunker]

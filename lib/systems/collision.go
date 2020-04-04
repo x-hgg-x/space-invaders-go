@@ -16,8 +16,8 @@ func CollisionSystem(world w.World) {
 	screenHeight := float64(world.Resources.ScreenDimensions.Height)
 
 	// Player bullet explosion at the top of screen
-	world.Manager.Join(gameComponents.PlayerBullet, world.Components.Engine.SpriteRender, world.Components.Engine.Transform).Visit(ecs.Visit(func(playerBulletEntity ecs.Entity) {
-		playerBullet := gameComponents.PlayerBullet.Get(playerBulletEntity).(*gc.PlayerBullet)
+	world.Manager.Join(gameComponents.Player, gameComponents.Bullet, world.Components.Engine.SpriteRender, world.Components.Engine.Transform).Visit(ecs.Visit(func(playerBulletEntity ecs.Entity) {
+		playerBullet := gameComponents.Bullet.Get(playerBulletEntity).(*gc.Bullet)
 		playerBulletSprite := world.Components.Engine.SpriteRender.Get(playerBulletEntity).(*ec.SpriteRender)
 		playerBulletTranslation := &world.Components.Engine.Transform.Get(playerBulletEntity).(*ec.Transform).Translation
 
@@ -28,7 +28,7 @@ func CollisionSystem(world w.World) {
 			playerBulletTranslation.Y = screenHeight - float64(firstSprite.Height)/2
 
 			playerBulletEntity.
-				RemoveComponent(gameComponents.PlayerBullet).
+				RemoveComponent(gameComponents.Bullet).
 				AddComponent(gameComponents.Deleted, &gc.Deleted{}).
 				AddComponent(world.Components.Engine.AnimationControl, &ec.AnimationControl{
 					Animation:      &animation,
