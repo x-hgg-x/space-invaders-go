@@ -38,13 +38,16 @@ type Alien struct {
 type AlienMaster struct{}
 
 // Bunker component
-type Bunker struct{}
+type Bunker struct {
+	PixelSize int `toml:"pixel_size"`
+}
 
 // Bullet component
 type Bullet struct {
 	Width    float64
 	Height   float64
 	Velocity float64
+	Health   float64
 }
 
 // Deleted component

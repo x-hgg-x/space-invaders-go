@@ -54,7 +54,7 @@ func CollisionSystem(world w.World) {
 	// Collision between player bullets and aliens
 	world.Manager.Join(gameComponents.Player, gameComponents.Bullet, world.Components.Engine.Transform).Visit(ecs.Visit(func(playerBulletEntity ecs.Entity) {
 		playerBullet := gameComponents.Bullet.Get(playerBulletEntity).(*gc.Bullet)
-		playerBulletTranslation := &world.Components.Engine.Transform.Get(playerBulletEntity).(*ec.Transform).Translation
+		playerBulletTranslation := world.Components.Engine.Transform.Get(playerBulletEntity).(*ec.Transform).Translation
 
 		world.Manager.Join(gameComponents.Alien, world.Components.Engine.AnimationControl).Visit(ecs.Visit(func(alienEntity ecs.Entity) {
 			alien := gameComponents.Alien.Get(alienEntity).(*gc.Alien)
@@ -100,17 +100,37 @@ func CollisionSystem(world w.World) {
 	// Collision between player and enemy bullets
 	world.Manager.Join(gameComponents.Player, gameComponents.Bullet, world.Components.Engine.Transform).Visit(ecs.Visit(func(playerBulletEntity ecs.Entity) {
 		playerBullet := gameComponents.Bullet.Get(playerBulletEntity).(*gc.Bullet)
-		playerBulletTranslation := &world.Components.Engine.Transform.Get(playerBulletEntity).(*ec.Transform).Translation
+		playerBulletTranslation := world.Components.Engine.Transform.Get(playerBulletEntity).(*ec.Transform).Translation
 
 		world.Manager.Join(gameComponents.Enemy, gameComponents.Bullet, world.Components.Engine.Transform).Visit(ecs.Visit(func(enemyBulletEntity ecs.Entity) {
 			enemyBullet := gameComponents.Bullet.Get(enemyBulletEntity).(*gc.Bullet)
-			enemyBulletTranslation := &world.Components.Engine.Transform.Get(enemyBulletEntity).(*ec.Transform).Translation
+			enemyBulletTranslation := world.Components.Engine.Transform.Get(enemyBulletEntity).(*ec.Transform).Translation
 
 			if rectangleCollision(enemyBulletTranslation.X, enemyBulletTranslation.Y, enemyBullet.Width, enemyBullet.Height, playerBulletTranslation.X, playerBulletTranslation.Y, playerBullet.Width, playerBullet.Height) {
 				world.Manager.DeleteEntity(playerBulletEntity)
 				world.Manager.DeleteEntity(enemyBulletEntity)
 			}
 		}))
+	}))
+
+	// Collision between bullets and bunkers
+	world.Manager.Join(gameComponents.Bullet, world.Components.Engine.Transform).Visit(ecs.Visit(func(bulletEntity ecs.Entity) {
+		bullet := gameComponents.Bullet.Get(bulletEntity).(*gc.Bullet)
+		bulletTranslation := world.Components.Engine.Transform.Get(bulletEntity).(*ec.Transform).Translation
+
+		world.Manager.Join(gameComponents.Bunker, world.Components.Engine.Transform).Visit(ecs.Visit(func(bunkerEntity ecs.Entity) {
+			bunkerPixelSize := float64(gameComponents.Bunker.Get(bunkerEntity).(*gc.Bunker).PixelSize)
+			bunkerTranslation := world.Components.Engine.Transform.Get(bunkerEntity).(*ec.Transform).Translation
+
+			if rectangleCollision(bunkerTranslation.X, bunkerTranslation.Y, bunkerPixelSize, bunkerPixelSize, bulletTranslation.X, bulletTranslation.Y, bullet.Width, bullet.Height) {
+				world.Manager.DeleteEntity(bunkerEntity)
+				bullet.Health -= bunkerPixelSize * bunkerPixelSize
+			}
+		}))
+
+		if bullet.Health <= 0 {
+			world.Manager.DeleteEntity(bulletEntity)
+		}
 	}))
 }
 

@@ -14,3 +14,4 @@
     width = 6.0
     height = 48.0
     velocity = 450.0
+    health = 250.0

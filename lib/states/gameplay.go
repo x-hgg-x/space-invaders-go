@@ -29,9 +29,11 @@ func (st *GameplayState) OnStart(world w.World) {
 	// Load game and ui entities
 	loader.LoadEntities("assets/metadata/entities/background.toml", world)
 	loader.LoadEntities("assets/metadata/entities/level.toml", world)
-	loader.LoadEntities("assets/metadata/entities/bunker.toml", world)
 	loader.LoadEntities("assets/metadata/entities/ui/score.toml", world)
 	loader.LoadEntities("assets/metadata/entities/ui/life.toml", world)
+
+	// Load bunkers
+	loader.LoadBunkers("assets/metadata/entities/bunker.toml", world)
 
 	ebiten.SetCursorMode(ebiten.CursorModeHidden)
 }

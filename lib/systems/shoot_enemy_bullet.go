@@ -14,7 +14,7 @@ import (
 	"github.com/hajimehoshi/ebiten"
 )
 
-var shootEnemyBulletFrame = 0
+var shootEnemyBulletFrame = ebiten.DefaultTPS
 
 // ShootEnemyBulletSystem shoots enemy bullet
 func ShootEnemyBulletSystem(world w.World) {
