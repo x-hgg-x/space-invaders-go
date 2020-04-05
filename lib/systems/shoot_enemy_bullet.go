@@ -22,12 +22,17 @@ func ShootEnemyBulletSystem(world w.World) {
 
 	gameComponents := world.Components.Game.(*gc.Components)
 
+	alienSet := world.Manager.Join(gameComponents.Alien, gameComponents.AlienMaster.Not())
+	if alienSet.Empty() {
+		return
+	}
+
 	if shootEnemyBulletFrame <= 0 {
 		shootEnemyBulletFrame = ebiten.DefaultTPS * 2
 
 		// Select random alien
 		alienEntities := []ecs.Entity{}
-		world.Manager.Join(gameComponents.Alien, gameComponents.AlienMaster.Not()).Visit(ecs.Visit(func(entity ecs.Entity) {
+		alienSet.Visit(ecs.Visit(func(entity ecs.Entity) {
 			alienEntities = append(alienEntities, entity)
 		}))
 		alienEntity := alienEntities[rand.Intn(len(alienEntities))]
