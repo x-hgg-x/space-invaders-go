@@ -10,6 +10,7 @@ type Components struct {
 	Enemy        *ecs.Component
 	Controllable *ecs.Component
 	Alien        *ecs.Component
+	AlienMaster  *ecs.Component
 	Bunker       *ecs.Component
 	Bullet       *ecs.Component
 	Deleted      *ecs.Component
@@ -32,6 +33,9 @@ type Alien struct {
 	Width  float64
 	Height float64
 }
+
+// AlienMaster component
+type AlienMaster struct{}
 
 // Bunker component
 type Bunker struct{}

@@ -20,14 +20,14 @@ func ShootPlayerBulletSystem(world w.World) {
 
 	gameComponents := world.Components.Game.(*gc.Components)
 
-	firstPlayer := ecs.GetFirst(world.Manager.Join(gameComponents.Player, gameComponents.Controllable, world.Components.Engine.Transform))
-	if firstPlayer == nil {
-		return
-	}
-	playerX := world.Components.Engine.Transform.Get(ecs.Entity(*firstPlayer)).(*ec.Transform).Translation.X
-
 	if world.Resources.InputHandler.Actions[resources.ShootAction] && (shootPlayerBulletFrame <= 0 || world.Manager.Join(gameComponents.Player, gameComponents.Bullet).Empty()) {
 		shootPlayerBulletFrame = ebiten.DefaultTPS
+
+		firstPlayer := ecs.GetFirst(world.Manager.Join(gameComponents.Player, gameComponents.Controllable, world.Components.Engine.Transform))
+		if firstPlayer == nil {
+			return
+		}
+		playerX := world.Components.Engine.Transform.Get(ecs.Entity(*firstPlayer)).(*ec.Transform).Translation.X
 
 		playerBulletEntity := loader.LoadEntities("assets/metadata/entities/player_bullet.toml", world)
 		for iEntity := range playerBulletEntity {

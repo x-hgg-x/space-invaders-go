@@ -1,6 +1,9 @@
 package states
 
 import (
+	"math/rand"
+	"time"
+
 	"github.com/x-hgg-x/space-invaders-go/lib/loader"
 	g "github.com/x-hgg-x/space-invaders-go/lib/systems"
 
@@ -20,6 +23,9 @@ type GameplayState struct {
 
 // OnStart method
 func (st *GameplayState) OnStart(world w.World) {
+	// Init rand seed
+	rand.Seed(time.Now().UnixNano())
+
 	// Load game and ui entities
 	loader.LoadEntities("assets/metadata/entities/background.toml", world)
 	loader.LoadEntities("assets/metadata/entities/level.toml", world)
@@ -67,6 +73,7 @@ func (st *GameplayState) OnStop(world w.World) {
 func (st *GameplayState) Update(world w.World, screen *ebiten.Image) states.Transition {
 	g.MovePlayerSystem(world)
 	g.ShootPlayerBulletSystem(world)
+	g.ShootEnemyBulletSystem(world)
 	g.MoveBulletSystem(world)
 	g.CollisionSystem(world)
 	g.DeleteSystem(world)

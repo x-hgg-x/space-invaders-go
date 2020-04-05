@@ -19,3 +19,5 @@
     [entity.components.Alien]
     width = 96.0
     height = 42.0
+
+    [entity.components.AlienMaster]

@@ -19,4 +19,4 @@
     [entity.components.Bullet]
     width = 12.0
     height = 48.0
-    velocity = -300.0
+    velocity = -200.0

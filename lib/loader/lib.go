@@ -16,6 +16,7 @@ type gameComponentList struct {
 	Enemy        *gc.Enemy
 	Controllable *gc.Controllable
 	Alien        *gc.Alien
+	AlienMaster  *gc.AlienMaster
 	Bunker       *gc.Bunker
 	Bullet       *gc.Bullet
 	Deleted      *gc.Deleted
