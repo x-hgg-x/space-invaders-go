@@ -7,6 +7,7 @@ import (
 
 	ecs "github.com/x-hgg-x/goecs"
 	ec "github.com/x-hgg-x/goecsengine/components"
+	"github.com/x-hgg-x/goecsengine/math"
 	w "github.com/x-hgg-x/goecsengine/world"
 
 	"github.com/hajimehoshi/ebiten"
@@ -20,7 +21,11 @@ func ShootPlayerBulletSystem(world w.World) {
 
 	gameComponents := world.Components.Game.(*gc.Components)
 
-	if world.Resources.InputHandler.Actions[resources.ShootAction] && (shootPlayerBulletFrame <= 0 || world.Manager.Join(gameComponents.Player, gameComponents.Bullet).Empty()) {
+	if world.Manager.Join(gameComponents.Player, gameComponents.Bullet).Empty() {
+		shootPlayerBulletFrame = math.Min(ebiten.DefaultTPS/10, shootPlayerBulletFrame)
+	}
+
+	if world.Resources.InputHandler.Actions[resources.ShootAction] && shootPlayerBulletFrame <= 0 {
 		shootPlayerBulletFrame = ebiten.DefaultTPS
 
 		firstPlayer := ecs.GetFirst(world.Manager.Join(gameComponents.Player, gameComponents.Controllable, world.Components.Engine.Transform))
