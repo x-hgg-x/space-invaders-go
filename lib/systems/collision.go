@@ -96,6 +96,22 @@ func CollisionSystem(world w.World) {
 			}
 		}))
 	}))
+
+	// Collision between player and enemy bullets
+	world.Manager.Join(gameComponents.Player, gameComponents.Bullet, world.Components.Engine.Transform).Visit(ecs.Visit(func(playerBulletEntity ecs.Entity) {
+		playerBullet := gameComponents.Bullet.Get(playerBulletEntity).(*gc.Bullet)
+		playerBulletTranslation := &world.Components.Engine.Transform.Get(playerBulletEntity).(*ec.Transform).Translation
+
+		world.Manager.Join(gameComponents.Enemy, gameComponents.Bullet, world.Components.Engine.Transform).Visit(ecs.Visit(func(enemyBulletEntity ecs.Entity) {
+			enemyBullet := gameComponents.Bullet.Get(enemyBulletEntity).(*gc.Bullet)
+			enemyBulletTranslation := &world.Components.Engine.Transform.Get(enemyBulletEntity).(*ec.Transform).Translation
+
+			if rectangleCollision(enemyBulletTranslation.X, enemyBulletTranslation.Y, enemyBullet.Width, enemyBullet.Height, playerBulletTranslation.X, playerBulletTranslation.Y, playerBullet.Width, playerBullet.Height) {
+				world.Manager.DeleteEntity(playerBulletEntity)
+				world.Manager.DeleteEntity(enemyBulletEntity)
+			}
+		}))
+	}))
 }
 
 func rectangleCollision(r1X, r1Y, r1Width, r1Height, r2X, r2Y, r2Width, r2Height float64) bool {
