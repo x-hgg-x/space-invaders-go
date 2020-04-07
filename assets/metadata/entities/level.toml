@@ -1,21 +1,4 @@
-# Player
-[[entity]]
-
-    [entity.components.SpriteRender]
-    sprite_sheet_name = "game"
-    sprite_number = 16
-
-    [entity.components.Transform]
-    translation = { x = 500.0, y = 30.0 }
-
-    [entity.components.Player]
-
-    [entity.components.Controllable]
-    width = 90.0
-    height = 48.0
-
-
-# Game over line
+# Player line
 [[entity]]
 
     [entity.components.SpriteRender]
@@ -23,6 +6,8 @@
 
     [entity.components.Transform]
     translation = { x = 500.0, y = 57.0 }
+
+    [entity.components.PlayerLine]
 
 
 # Aliens

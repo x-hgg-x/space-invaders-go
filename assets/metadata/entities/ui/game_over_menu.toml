@@ -1,0 +1,128 @@
+[[entity]]
+
+    [entity.components.SpriteRender]
+    fill = { width = 1000, height = 800, color = [0, 0, 0, 120] }
+
+    [entity.components.Transform]
+    translation = { x = 500.0, y = 400.0 }
+    depth = 1.0
+
+
+[[entity]]
+
+    [entity.components.Text]
+    id = "game_over"
+    text = "GAME OVER"
+    font_face = { font = "joystix", options = { size = 80.0, hinting = "Full" } }
+    color = [255, 255, 255, 255]
+
+    [entity.components.UITransform]
+    translation = { x = 500, y = 650 }
+
+
+[[entity]]
+
+    [entity.components.Text]
+    id = "cursor_restart"
+    text = "\u25ba"
+    font_face = { font = "hack", options = { size = 60.0, hinting = "Full" } }
+    color = [255, 255, 255, 255]
+
+    [entity.components.UITransform]
+    translation = { x = 265, y = 450 }
+
+
+[[entity]]
+
+    [entity.components.Text]
+    id = "cursor_main_menu"
+    text = "\u25ba"
+    font_face = { font = "hack", options = { size = 60.0, hinting = "Full" } }
+    color = [255, 255, 255, 0]
+
+    [entity.components.UITransform]
+    translation = { x = 210, y = 300 }
+
+
+[[entity]]
+
+    [entity.components.Text]
+    id = "cursor_exit"
+    text = "\u25ba"
+    font_face = { font = "hack", options = { size = 60.0, hinting = "Full" } }
+    color = [255, 255, 255, 0]
+
+    [entity.components.UITransform]
+    translation = { x = 340, y = 150 }
+
+
+[[entity]]
+
+    [entity.components.Text]
+    id = "restart"
+    text = "RESTART"
+    font_face = { font = "joystix", options = { size = 60.0, hinting = "Full" } }
+    color = [255, 255, 255, 255]
+
+    [entity.components.UITransform]
+    translation = { x = 500, y = 450 }
+
+
+[[entity]]
+
+    [entity.components.SpriteRender]
+    fill = { width = 370, height = 60 }
+
+    [entity.components.Transform]
+    translation = { x = 500.0, y = 450.0 }
+
+    [entity.components.MouseReactive]
+    id = "restart"
+
+
+[[entity]]
+
+    [entity.components.Text]
+    id = "main_menu"
+    text = "MAIN MENU"
+    font_face = { font = "joystix", options = { size = 60.0, hinting = "Full" } }
+    color = [255, 255, 255, 255]
+
+    [entity.components.UITransform]
+    translation = { x = 500, y = 300 }
+
+
+[[entity]]
+
+    [entity.components.SpriteRender]
+    fill = { width = 480, height = 60 }
+
+    [entity.components.Transform]
+    translation = { x = 500.0, y = 300.0 }
+
+    [entity.components.MouseReactive]
+    id = "main_menu"
+
+
+[[entity]]
+
+    [entity.components.Text]
+    id = "exit"
+    text = "EXIT"
+    font_face = { font = "joystix", options = { size = 60.0, hinting = "Full" } }
+    color = [255, 255, 255, 255]
+
+    [entity.components.UITransform]
+    translation = { x = 500, y = 150 }
+
+
+[[entity]]
+
+    [entity.components.SpriteRender]
+    fill = { width = 220, height = 60 }
+
+    [entity.components.Transform]
+    translation = { x = 500.0, y = 150.0 }
+
+    [entity.components.MouseReactive]
+    id = "exit"

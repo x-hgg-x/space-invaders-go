@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/x-hgg-x/space-invaders-go/lib/loader"
+	"github.com/x-hgg-x/space-invaders-go/lib/resources"
 	g "github.com/x-hgg-x/space-invaders-go/lib/systems"
 
 	ecs "github.com/x-hgg-x/goecs"
@@ -29,11 +30,14 @@ func (st *GameplayState) OnStart(world w.World) {
 	// Load game and ui entities
 	loader.LoadEntities("assets/metadata/entities/background.toml", world)
 	loader.LoadEntities("assets/metadata/entities/level.toml", world)
+	loader.LoadEntities("assets/metadata/entities/player.toml", world)
 	loader.LoadEntities("assets/metadata/entities/ui/score.toml", world)
 	loader.LoadEntities("assets/metadata/entities/ui/life.toml", world)
 
 	// Load bunkers
 	loader.LoadBunkers("assets/metadata/entities/bunker.toml", world)
+
+	world.Resources.Game = resources.NewGame()
 
 	ebiten.SetCursorMode(ebiten.CursorModeHidden)
 }
@@ -66,6 +70,7 @@ func (st *GameplayState) OnResume(world w.World) {
 
 // OnStop method
 func (st *GameplayState) OnStop(world w.World) {
+	world.Resources.Game = nil
 	world.Manager.DeleteAllEntities()
 
 	ebiten.SetCursorMode(ebiten.CursorModeVisible)
@@ -81,10 +86,22 @@ func (st *GameplayState) Update(world w.World, screen *ebiten.Image) states.Tran
 	g.ShootEnemyBulletSystem(world)
 	g.MoveBulletSystem(world)
 	g.CollisionSystem(world)
+	g.LifeSystem(world)
 	g.DeleteSystem(world)
 
 	if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {
 		return states.Transition{Type: states.TransPush, NewStates: []states.State{&PauseMenuState{}}}
 	}
+
+	gameResources := world.Resources.Game.(*resources.Game)
+	switch gameResources.StateEvent {
+	case resources.StateEventDeath:
+		gameResources.StateEvent = resources.StateEventNone
+		return states.Transition{Type: states.TransPush, NewStates: []states.State{&DeathState{}}}
+	case resources.StateEventGameOver:
+		gameResources.StateEvent = resources.StateEventNone
+		return states.Transition{Type: states.TransPush, NewStates: []states.State{&GameOverState{}}}
+	}
+
 	return states.Transition{}
 }

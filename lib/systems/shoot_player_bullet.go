@@ -22,7 +22,7 @@ func ShootPlayerBulletSystem(world w.World) {
 	gameComponents := world.Components.Game.(*gc.Components)
 
 	if world.Manager.Join(gameComponents.Player, gameComponents.Bullet).Empty() {
-		shootPlayerBulletFrame = math.Min(ebiten.DefaultTPS/10, shootPlayerBulletFrame)
+		shootPlayerBulletFrame = math.Min(ebiten.DefaultTPS/20, shootPlayerBulletFrame)
 	}
 
 	if world.Resources.InputHandler.Actions[resources.ShootAction] && shootPlayerBulletFrame <= 0 {

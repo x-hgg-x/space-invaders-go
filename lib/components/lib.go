@@ -2,6 +2,7 @@ package components
 
 import (
 	ecs "github.com/x-hgg-x/goecs"
+	"github.com/x-hgg-x/goecsengine/math"
 )
 
 // Components contains references to all game components
@@ -13,6 +14,7 @@ type Components struct {
 	AlienMaster  *ecs.Component
 	Bunker       *ecs.Component
 	Bullet       *ecs.Component
+	PlayerLine   *ecs.Component
 	Deleted      *ecs.Component
 }
 
@@ -30,8 +32,9 @@ type Controllable struct {
 
 // Alien component
 type Alien struct {
-	Width  float64
-	Height float64
+	Width       float64
+	Height      float64
+	Translation math.Vector2
 }
 
 // AlienMaster component
@@ -51,6 +54,9 @@ type Bullet struct {
 	Velocity float64
 	Health   float64
 }
+
+// PlayerLine component
+type PlayerLine struct{}
 
 // Deleted component
 type Deleted struct{}

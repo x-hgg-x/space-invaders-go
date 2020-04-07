@@ -15,6 +15,8 @@ import (
 // CollisionSystem manages collisions
 func CollisionSystem(world w.World) {
 	gameComponents := world.Components.Game.(*gc.Components)
+	gameResources := world.Resources.Game.(*resources.Game)
+	gameEvents := &gameResources.Events
 
 	screenHeight := float64(world.Resources.ScreenDimensions.Height)
 
@@ -106,7 +108,7 @@ func CollisionSystem(world w.World) {
 			})
 	}))
 
-	// Collision between player and enemy bullets
+	// Collision between player bullets and enemy bullets
 	world.Manager.Join(gameComponents.Player, gameComponents.Bullet, world.Components.Engine.Transform).Visit(ecs.Visit(func(playerBulletEntity ecs.Entity) {
 		playerBullet := gameComponents.Bullet.Get(playerBulletEntity).(*gc.Bullet)
 		playerBulletTranslation := world.Components.Engine.Transform.Get(playerBulletEntity).(*ec.Transform).Translation
@@ -140,6 +142,27 @@ func CollisionSystem(world w.World) {
 		if bullet.Health <= 0 {
 			world.Manager.DeleteEntity(bulletEntity)
 		}
+	}))
+
+	// Collision between player and enemy bullets
+	world.Manager.Join(gameComponents.Player, gameComponents.Controllable, world.Components.Engine.SpriteRender, world.Components.Engine.Transform).Visit(ecs.Visit(func(playerEntity ecs.Entity) {
+		playerControllable := gameComponents.Controllable.Get(playerEntity).(*gc.Controllable)
+		playerTranslation := world.Components.Engine.Transform.Get(playerEntity).(*ec.Transform).Translation
+
+		world.Manager.Join(gameComponents.Enemy, gameComponents.Bullet, world.Components.Engine.Transform).Visit(
+			func(index int) (skip bool) {
+				enemyBulletEntity := ecs.Entity(index)
+				enemyBullet := gameComponents.Bullet.Get(enemyBulletEntity).(*gc.Bullet)
+				enemyBulletTranslation := world.Components.Engine.Transform.Get(enemyBulletEntity).(*ec.Transform).Translation
+
+				if !rectangleCollision(playerTranslation.X, playerTranslation.Y, playerControllable.Width, playerControllable.Height, enemyBulletTranslation.X, enemyBulletTranslation.Y, enemyBullet.Width, enemyBullet.Height) {
+					return false
+				}
+
+				world.Manager.DeleteEntity(enemyBulletEntity)
+				gameEvents.LifeEvents = append(gameEvents.LifeEvents, resources.LifeEvent{})
+				return true
+			})
 	}))
 }
 

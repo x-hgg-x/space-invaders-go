@@ -26,6 +26,7 @@ type gameComponentList struct {
 	AlienMaster  *gc.AlienMaster
 	Bunker       *gc.Bunker
 	Bullet       *gc.Bullet
+	PlayerLine   *gc.PlayerLine
 	Deleted      *gc.Deleted
 }
 
