@@ -56,13 +56,20 @@ func CollisionSystem(world w.World) {
 		playerBullet := gameComponents.Bullet.Get(playerBulletEntity).(*gc.Bullet)
 		playerBulletTranslation := world.Components.Engine.Transform.Get(playerBulletEntity).(*ec.Transform).Translation
 
-		world.Manager.Join(gameComponents.Alien, world.Components.Engine.AnimationControl).Visit(ecs.Visit(func(alienEntity ecs.Entity) {
-			alien := gameComponents.Alien.Get(alienEntity).(*gc.Alien)
-			alienSprite := world.Components.Engine.SpriteRender.Get(alienEntity).(*ec.SpriteRender)
-			alienTranslation := world.Components.Engine.Transform.Get(alienEntity).(*ec.Transform).Translation
-			alienAnimationControl := world.Components.Engine.AnimationControl.Get(alienEntity).(*ec.AnimationControl)
+		world.Manager.Join(gameComponents.Alien, world.Components.Engine.AnimationControl).Visit(
+			func(index int) (skip bool) {
+				alienEntity := ecs.Entity(index)
+				alien := gameComponents.Alien.Get(alienEntity).(*gc.Alien)
+				alienSprite := world.Components.Engine.SpriteRender.Get(alienEntity).(*ec.SpriteRender)
+				alienTranslation := world.Components.Engine.Transform.Get(alienEntity).(*ec.Transform).Translation
+				alienAnimationControl := world.Components.Engine.AnimationControl.Get(alienEntity).(*ec.AnimationControl)
 
-			if rectangleCollision(alienTranslation.X, alienTranslation.Y, alien.Width, alien.Height, playerBulletTranslation.X, playerBulletTranslation.Y, playerBullet.Width, playerBullet.Height) {
+				if !rectangleCollision(alienTranslation.X, alienTranslation.Y, alien.Width, alien.Height, playerBulletTranslation.X, playerBulletTranslation.Y, playerBullet.Width, playerBullet.Height) {
+					// Check next alien
+					return false
+				}
+
+				// Only one alien is killed for each bullet
 				world.Manager.DeleteEntity(playerBulletEntity)
 
 				var newAlienAnimation *ec.Animation
@@ -93,8 +100,10 @@ func CollisionSystem(world w.World) {
 					RateMultiplier: 1,
 				}
 				alienEntity.RemoveComponent(gameComponents.Alien).AddComponent(gameComponents.Deleted, &gc.Deleted{})
-			}
-		}))
+
+				// Skip other aliens
+				return true
+			})
 	}))
 
 	// Collision between player and enemy bullets
