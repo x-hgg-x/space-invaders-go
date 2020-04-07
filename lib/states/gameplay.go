@@ -74,6 +74,8 @@ func (st *GameplayState) OnStop(world w.World) {
 // Update method
 func (st *GameplayState) Update(world w.World, screen *ebiten.Image) states.Transition {
 	g.MovePlayerSystem(world)
+	g.SpawnAlienMasterSystem(world)
+	g.MoveAlienMasterSystem(world)
 	g.MoveAlienSystem(world)
 	g.ShootPlayerBulletSystem(world)
 	g.ShootEnemyBulletSystem(world)

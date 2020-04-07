@@ -3,12 +3,13 @@ package systems
 import (
 	"math"
 
-	"github.com/hajimehoshi/ebiten"
 	gc "github.com/x-hgg-x/space-invaders-go/lib/components"
 
 	ecs "github.com/x-hgg-x/goecs"
 	ec "github.com/x-hgg-x/goecsengine/components"
 	w "github.com/x-hgg-x/goecsengine/world"
+
+	"github.com/hajimehoshi/ebiten"
 )
 
 var moveAlienDirectionX = 1.0

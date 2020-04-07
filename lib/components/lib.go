@@ -35,7 +35,9 @@ type Alien struct {
 }
 
 // AlienMaster component
-type AlienMaster struct{}
+type AlienMaster struct {
+	Direction float64
+}
 
 // Bunker component
 type Bunker struct {
