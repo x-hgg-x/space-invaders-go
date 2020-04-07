@@ -28,7 +28,7 @@ func ShootEnemyBulletSystem(world w.World) {
 	}
 
 	if shootEnemyBulletFrame <= 0 {
-		shootEnemyBulletFrame = ebiten.DefaultTPS * 2
+		shootEnemyBulletFrame = int(ebiten.DefaultTPS * rand.Float32())
 
 		// Select random alien
 		alienEntities := []ecs.Entity{}

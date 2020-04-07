@@ -5,7 +5,8 @@
     sprite_number = 0
 
     [entity.components.Transform]
-    translation = { x = 150.0, y = 126.0 }
+    translation = { x = 200.0, y = 126.0 }
+    depth = -0.1
 
     [entity.components.Bunker]
     pixel_size = 12
@@ -19,6 +20,7 @@
 
     [entity.components.Transform]
     translation = { x = 500.0, y = 126.0 }
+    depth = -0.1
 
     [entity.components.Bunker]
     pixel_size = 12
@@ -31,7 +33,8 @@
     sprite_number = 0
 
     [entity.components.Transform]
-    translation = { x = 850.0, y = 126.0 }
+    translation = { x = 800.0, y = 126.0 }
+    depth = -0.1
 
     [entity.components.Bunker]
     pixel_size = 12

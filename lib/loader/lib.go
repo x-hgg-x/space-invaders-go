@@ -98,7 +98,7 @@ func LoadBunkers(entityBunkerMetadataPath string, world w.World) []ecs.Entity {
 	newBunkerEntities := []ecs.Entity{}
 	for _, bunkerEntity := range bunkerEntities {
 		bunkerSprite := world.Components.Engine.SpriteRender.Get(bunkerEntity).(*ec.SpriteRender)
-		bunkerTranslation := world.Components.Engine.Transform.Get(bunkerEntity).(*ec.Transform).Translation
+		bunkerTransform := world.Components.Engine.Transform.Get(bunkerEntity).(*ec.Transform)
 
 		bunkerSpriteWidth := float64(bunkerSprite.SpriteSheet.Sprites[bunkerSprite.SpriteNumber].Width)
 		bunkerSpriteHeight := float64(bunkerSprite.SpriteSheet.Sprites[bunkerSprite.SpriteNumber].Height)
@@ -115,10 +115,13 @@ func LoadBunkers(entityBunkerMetadataPath string, world w.World) []ecs.Entity {
 							},
 							SpriteNumber: 0,
 						}).
-						AddComponent(world.Components.Engine.Transform, &ec.Transform{Translation: math.Vector2{
-							X: bunkerTranslation.X - bunkerSpriteWidth/2 + float64(x) + float64(pixelSize)/2,
-							Y: bunkerTranslation.Y + bunkerSpriteHeight/2 - float64(y) - float64(pixelSize)/2,
-						}}).
+						AddComponent(world.Components.Engine.Transform, &ec.Transform{
+							Depth: bunkerTransform.Depth,
+							Translation: math.Vector2{
+								X: bunkerTransform.Translation.X - bunkerSpriteWidth/2 + float64(x) + float64(pixelSize)/2,
+								Y: bunkerTransform.Translation.Y + bunkerSpriteHeight/2 - float64(y) - float64(pixelSize)/2,
+							},
+						}).
 						AddComponent(gameComponents.Bunker, &gc.Bunker{PixelSize: pixelSize}))
 				}
 			}
