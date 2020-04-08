@@ -169,6 +169,11 @@ func CollisionSystem(world w.World) {
 				return true
 			})
 	}))
+
+	// Finish level if no alien are left
+	if world.Manager.Join(gameComponents.Alien, gameComponents.AlienMaster.Not()).Empty() {
+		gameResources.StateEvent = resources.StateEventLevelComplete
+	}
 }
 
 func rectangleCollision(r1X, r1Y, r1Width, r1Height, r2X, r2Y, r2Width, r2Height float64) bool {

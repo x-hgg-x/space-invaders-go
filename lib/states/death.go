@@ -76,8 +76,8 @@ func resurrectPlayer(world w.World) {
 		alien.Translation = math.Vector2{}
 	}))
 
-	// Clear enemy bullets
-	world.Manager.Join(gameComponents.Enemy, gameComponents.Bullet).Visit(ecs.Visit(func(enemyBulletEntity ecs.Entity) {
+	// Clear bullets
+	world.Manager.Join(gameComponents.Bullet).Visit(ecs.Visit(func(enemyBulletEntity ecs.Entity) {
 		world.Manager.DeleteEntity(enemyBulletEntity)
 	}))
 

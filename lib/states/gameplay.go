@@ -1,6 +1,7 @@
 package states
 
 import (
+	"fmt"
 	"math/rand"
 	"time"
 
@@ -19,6 +20,7 @@ import (
 
 // GameplayState is the main game state
 type GameplayState struct {
+	game              *resources.Game
 	runningAnimations []*ec.AnimationControl
 }
 
@@ -29,15 +31,27 @@ func (st *GameplayState) OnStart(world w.World) {
 
 	// Load game and ui entities
 	loader.LoadEntities("assets/metadata/entities/background.toml", world)
-	loader.LoadEntities("assets/metadata/entities/level.toml", world)
+	loader.LoadEntities("assets/metadata/entities/alien.toml", world)
 	loader.LoadEntities("assets/metadata/entities/player.toml", world)
-	loader.LoadEntities("assets/metadata/entities/ui/score.toml", world)
-	loader.LoadEntities("assets/metadata/entities/ui/life.toml", world)
+	loader.LoadEntities("assets/metadata/entities/player_line.toml", world)
+	scoreEntity := loader.LoadEntities("assets/metadata/entities/ui/score.toml", world)
+	lifeEntity := loader.LoadEntities("assets/metadata/entities/ui/life.toml", world)
 
 	// Load bunkers
 	loader.LoadBunkers("assets/metadata/entities/bunker.toml", world)
 
-	world.Resources.Game = resources.NewGame()
+	// Set score and life text after a completed level
+	if st.game != nil {
+		world.Resources.Game = st.game
+		for iEntity := range scoreEntity {
+			world.Components.Engine.Text.Get(scoreEntity[iEntity]).(*ec.Text).Text = fmt.Sprintf("SCORE: %d", st.game.Score)
+		}
+		for iEntity := range lifeEntity {
+			world.Components.Engine.Text.Get(lifeEntity[iEntity]).(*ec.Text).Text = fmt.Sprintf("LIVES: %d", st.game.Lives)
+		}
+	} else {
+		world.Resources.Game = resources.NewGame()
+	}
 
 	ebiten.SetCursorMode(ebiten.CursorModeHidden)
 }
@@ -102,6 +116,9 @@ func (st *GameplayState) Update(world w.World, screen *ebiten.Image) states.Tran
 	case resources.StateEventGameOver:
 		gameResources.StateEvent = resources.StateEventNone
 		return states.Transition{Type: states.TransPush, NewStates: []states.State{&GameOverState{}}}
+	case resources.StateEventLevelComplete:
+		gameResources.StateEvent = resources.StateEventNone
+		return states.Transition{Type: states.TransPush, NewStates: []states.State{&LevelCompleteState{game: world.Resources.Game.(*resources.Game)}}}
 	}
 
 	return states.Transition{}

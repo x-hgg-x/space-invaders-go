@@ -1,0 +1,9 @@
+[[entity]]
+
+    [entity.components.SpriteRender]
+    fill = { width = 1000, height = 1, color = [255, 255, 255, 255] }
+
+    [entity.components.Transform]
+    translation = { x = 500.0, y = 57.0 }
+
+    [entity.components.PlayerLine]
