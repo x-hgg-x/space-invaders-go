@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/x-hgg-x/space-invaders-go/lib/loader"
+	"github.com/x-hgg-x/space-invaders-go/lib/resources"
 
 	ecs "github.com/x-hgg-x/goecs"
 	"github.com/x-hgg-x/goecsengine/states"
@@ -14,6 +15,7 @@ import (
 
 // GameOverState is the game over menu state
 type GameOverState struct {
+	difficulty   resources.Difficulty
 	gameOverMenu []ecs.Entity
 	selection    int
 }
@@ -34,7 +36,7 @@ func (st *GameOverState) confirmSelection() states.Transition {
 	switch st.selection {
 	case 0:
 		// Restart
-		return states.Transition{Type: states.TransReplace, NewStates: []states.State{&GameplayState{}}}
+		return states.Transition{Type: states.TransReplace, NewStates: []states.State{&GameplayState{game: resources.NewGame(st.difficulty)}}}
 	case 1:
 		// Main Menu
 		return states.Transition{Type: states.TransReplace, NewStates: []states.State{&MainMenuState{}}}

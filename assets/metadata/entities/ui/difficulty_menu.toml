@@ -1,54 +1,68 @@
 [[entity]]
 
-    [entity.components.SpriteRender]
-    fill = { width = 1000, height = 800, color = [0, 0, 0, 120] }
-
-    [entity.components.Transform]
-    translation = { x = 500.0, y = 400.0 }
-    depth = 1.0
-
-
-[[entity]]
-
     [entity.components.Text]
-    id = "level_complete"
-    text = "LEVEL COMPLETE"
-    font_face = { font = "joystix", options = { size = 80.0, hinting = "Full" } }
+    id = "cursor_easy"
+    text = "\u25ba"
+    font_face = { font = "hack", options = { size = 60.0, hinting = "Full" } }
     color = [255, 255, 255, 255]
 
     [entity.components.UITransform]
-    translation = { x = 500, y = 600 }
+    translation = { x = 340, y = 550 }
 
 
 [[entity]]
 
     [entity.components.Text]
-    id = "cursor_continue"
+    id = "cursor_normal"
     text = "\u25ba"
     font_face = { font = "hack", options = { size = 60.0, hinting = "Full" } }
     color = [255, 255, 255, 0]
 
     [entity.components.UITransform]
-    translation = { x = 235, y = 400 }
+    translation = { x = 285, y = 400 }
 
 
 [[entity]]
 
     [entity.components.Text]
-    id = "cursor_main_menu"
+    id = "cursor_hard"
     text = "\u25ba"
     font_face = { font = "hack", options = { size = 60.0, hinting = "Full" } }
     color = [255, 255, 255, 0]
 
     [entity.components.UITransform]
-    translation = { x = 210, y = 250 }
+    translation = { x = 340, y = 250 }
 
 
 [[entity]]
 
     [entity.components.Text]
-    id = "continue"
-    text = "CONTINUE"
+    id = "easy"
+    text = "EASY"
+    font_face = { font = "joystix", options = { size = 60.0, hinting = "Full" } }
+    color = [255, 255, 255, 255]
+
+    [entity.components.UITransform]
+    translation = { x = 500, y = 550 }
+
+
+[[entity]]
+
+    [entity.components.SpriteRender]
+    fill = { width = 220, height = 60 }
+
+    [entity.components.Transform]
+    translation = { x = 500.0, y = 550.0 }
+
+    [entity.components.MouseReactive]
+    id = "easy"
+
+
+[[entity]]
+
+    [entity.components.Text]
+    id = "normal"
+    text = "NORMAL"
     font_face = { font = "joystix", options = { size = 60.0, hinting = "Full" } }
     color = [255, 255, 255, 255]
 
@@ -59,20 +73,20 @@
 [[entity]]
 
     [entity.components.SpriteRender]
-    fill = { width = 430, height = 60 }
+    fill = { width = 330, height = 60 }
 
     [entity.components.Transform]
     translation = { x = 500.0, y = 400.0 }
 
     [entity.components.MouseReactive]
-    id = "continue"
+    id = "normal"
 
 
 [[entity]]
 
     [entity.components.Text]
-    id = "main_menu"
-    text = "MAIN MENU"
+    id = "hard"
+    text = "HARD"
     font_face = { font = "joystix", options = { size = 60.0, hinting = "Full" } }
     color = [255, 255, 255, 255]
 
@@ -83,10 +97,10 @@
 [[entity]]
 
     [entity.components.SpriteRender]
-    fill = { width = 480, height = 60 }
+    fill = { width = 220, height = 60 }
 
     [entity.components.Transform]
     translation = { x = 500.0, y = 250.0 }
 
     [entity.components.MouseReactive]
-    id = "main_menu"
+    id = "hard"

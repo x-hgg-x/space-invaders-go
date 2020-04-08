@@ -12,6 +12,7 @@ import (
 	ecs "github.com/x-hgg-x/goecs"
 	ec "github.com/x-hgg-x/goecsengine/components"
 	"github.com/x-hgg-x/goecsengine/states"
+	"github.com/x-hgg-x/goecsengine/utils"
 	w "github.com/x-hgg-x/goecsengine/world"
 
 	"github.com/hajimehoshi/ebiten"
@@ -36,21 +37,38 @@ func (st *GameplayState) OnStart(world w.World) {
 	loader.LoadEntities("assets/metadata/entities/player_line.toml", world)
 	scoreEntity := loader.LoadEntities("assets/metadata/entities/ui/score.toml", world)
 	lifeEntity := loader.LoadEntities("assets/metadata/entities/ui/life.toml", world)
+	difficultyEntity := loader.LoadEntities("assets/metadata/entities/ui/difficulty.toml", world)
 
 	// Load bunkers
 	loader.LoadBunkers("assets/metadata/entities/bunker.toml", world)
 
-	// Set score and life text after a completed level
-	if st.game != nil {
-		world.Resources.Game = st.game
-		for iEntity := range scoreEntity {
-			world.Components.Engine.Text.Get(scoreEntity[iEntity]).(*ec.Text).Text = fmt.Sprintf("SCORE: %d", st.game.Score)
-		}
-		for iEntity := range lifeEntity {
-			world.Components.Engine.Text.Get(lifeEntity[iEntity]).(*ec.Text).Text = fmt.Sprintf("LIVES: %d", st.game.Lives)
-		}
-	} else {
-		world.Resources.Game = resources.NewGame()
+	// Set game
+	world.Resources.Game = st.game
+
+	// Set score text
+	for iEntity := range scoreEntity {
+		world.Components.Engine.Text.Get(scoreEntity[iEntity]).(*ec.Text).Text = fmt.Sprintf("SCORE: %d", st.game.Score)
+	}
+
+	// Set life text
+	for iEntity := range lifeEntity {
+		world.Components.Engine.Text.Get(lifeEntity[iEntity]).(*ec.Text).Text = fmt.Sprintf("LIVES: %d", st.game.Lives)
+	}
+
+	// Set difficulty text
+	var difficulty string
+	switch st.game.Difficulty {
+	case resources.DifficultyEasy:
+		difficulty = "EASY"
+	case resources.DifficultyNormal:
+		difficulty = "NORMAL"
+	case resources.DifficultyHard:
+		difficulty = "HARD"
+	default:
+		utils.LogError(fmt.Errorf("unknown difficulty: %v", st.game.Difficulty))
+	}
+	for iEntity := range difficultyEntity {
+		world.Components.Engine.Text.Get(difficultyEntity[iEntity]).(*ec.Text).Text = difficulty
 	}
 
 	ebiten.SetCursorMode(ebiten.CursorModeHidden)
@@ -115,10 +133,10 @@ func (st *GameplayState) Update(world w.World, screen *ebiten.Image) states.Tran
 		return states.Transition{Type: states.TransPush, NewStates: []states.State{&DeathState{}}}
 	case resources.StateEventGameOver:
 		gameResources.StateEvent = resources.StateEventNone
-		return states.Transition{Type: states.TransPush, NewStates: []states.State{&GameOverState{}}}
+		return states.Transition{Type: states.TransPush, NewStates: []states.State{&GameOverState{difficulty: gameResources.Difficulty}}}
 	case resources.StateEventLevelComplete:
 		gameResources.StateEvent = resources.StateEventNone
-		return states.Transition{Type: states.TransPush, NewStates: []states.State{&LevelCompleteState{game: world.Resources.Game.(*resources.Game)}}}
+		return states.Transition{Type: states.TransPush, NewStates: []states.State{&LevelCompleteState{game: gameResources}}}
 	}
 
 	return states.Transition{}

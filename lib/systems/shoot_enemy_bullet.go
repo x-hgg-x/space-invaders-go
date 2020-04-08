@@ -5,6 +5,7 @@ import (
 
 	gc "github.com/x-hgg-x/space-invaders-go/lib/components"
 	"github.com/x-hgg-x/space-invaders-go/lib/loader"
+	"github.com/x-hgg-x/space-invaders-go/lib/resources"
 
 	ecs "github.com/x-hgg-x/goecs"
 	ec "github.com/x-hgg-x/goecsengine/components"
@@ -21,6 +22,7 @@ func ShootEnemyBulletSystem(world w.World) {
 	shootEnemyBulletFrame--
 
 	gameComponents := world.Components.Game.(*gc.Components)
+	gameResources := world.Resources.Game.(*resources.Game)
 
 	alienSet := world.Manager.Join(gameComponents.Alien, gameComponents.AlienMaster.Not())
 	if alienSet.Empty() {
@@ -28,7 +30,7 @@ func ShootEnemyBulletSystem(world w.World) {
 	}
 
 	if shootEnemyBulletFrame <= 0 {
-		shootEnemyBulletFrame = int(ebiten.DefaultTPS * rand.Float32())
+		shootEnemyBulletFrame = int(ebiten.DefaultTPS / float64(gameResources.Difficulty) * rand.Float64())
 
 		// Select random alien
 		alienEntities := []ecs.Entity{}

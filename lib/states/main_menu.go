@@ -10,6 +10,7 @@ import (
 	w "github.com/x-hgg-x/goecsengine/world"
 
 	"github.com/hajimehoshi/ebiten"
+	"github.com/hajimehoshi/ebiten/inpututil"
 )
 
 // MainMenuState is the main menu state
@@ -34,7 +35,7 @@ func (st *MainMenuState) confirmSelection() states.Transition {
 	switch st.selection {
 	case 0:
 		// New game
-		return states.Transition{Type: states.TransSwitch, NewStates: []states.State{&GameplayState{}}}
+		return states.Transition{Type: states.TransSwitch, NewStates: []states.State{&DifficultyMenuState{}}}
 	case 1:
 		// Exit
 		return states.Transition{Type: states.TransQuit}
@@ -73,7 +74,7 @@ func (st *MainMenuState) OnStop(world w.World) {
 
 // Update method
 func (st *MainMenuState) Update(world w.World, screen *ebiten.Image) states.Transition {
-	if ebiten.IsKeyPressed(ebiten.KeyEscape) {
+	if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {
 		return states.Transition{Type: states.TransQuit}
 	}
 	return updateMenu(st, world)

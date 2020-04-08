@@ -25,15 +25,26 @@ const (
 	StateEventLevelComplete
 )
 
+// Difficulty is a game difficulty
+type Difficulty float64
+
+// List of game difficulties
+const (
+	DifficultyEasy   Difficulty = 0.5
+	DifficultyNormal Difficulty = 1
+	DifficultyHard   Difficulty = 2
+)
+
 // Game contains game resources
 type Game struct {
 	Events     Events
 	StateEvent StateEvent
+	Difficulty Difficulty
 	Lives      int
 	Score      int
 }
 
 // NewGame creates a new game
-func NewGame() *Game {
-	return &Game{Lives: 3}
+func NewGame(difficulty Difficulty) *Game {
+	return &Game{Difficulty: difficulty, Lives: 3}
 }
