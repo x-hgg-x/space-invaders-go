@@ -59,6 +59,7 @@ func MoveAlienSystem(world w.World) {
 
 			if minAlienPosY+moveAlienDiffY < playerLineY {
 				gameEvents.LifeEvents = append(gameEvents.LifeEvents, resources.LifeEvent{})
+				gameEvents.ScoreEvents = append(gameEvents.ScoreEvents, resources.ScoreEvent{Score: -1000})
 			}
 		}
 	}

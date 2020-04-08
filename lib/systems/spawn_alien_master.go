@@ -12,7 +12,7 @@ import (
 	"github.com/hajimehoshi/ebiten"
 )
 
-var spawnAlienMasterFrame = int(ebiten.DefaultTPS * 20 * rand.Float32())
+var spawnAlienMasterFrame = int(ebiten.DefaultTPS * 40 * rand.Float32())
 
 // SpawnAlienMasterSystem spawns alien master
 func SpawnAlienMasterSystem(world w.World) {
@@ -25,7 +25,7 @@ func SpawnAlienMasterSystem(world w.World) {
 	}
 
 	if spawnAlienMasterFrame <= 0 {
-		spawnAlienMasterFrame = int(ebiten.DefaultTPS * 20 * rand.Float32())
+		spawnAlienMasterFrame = int(ebiten.DefaultTPS * 40 * rand.Float32())
 
 		alienMasterEntity := loader.LoadEntities("assets/metadata/entities/alien_master.toml", world)
 		for iEntity := range alienMasterEntity {

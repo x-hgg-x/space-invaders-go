@@ -87,6 +87,7 @@ func (st *GameplayState) Update(world w.World, screen *ebiten.Image) states.Tran
 	g.MoveBulletSystem(world)
 	g.CollisionSystem(world)
 	g.LifeSystem(world)
+	g.ScoreSystem(world)
 	g.DeleteSystem(world)
 
 	if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {

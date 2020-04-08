@@ -80,12 +80,16 @@ func CollisionSystem(world w.World) {
 						switch key {
 						case resources.AlienLoop1Animation:
 							newAlienAnimation = alienSprite.SpriteSheet.Animations[resources.AlienDeath1Animation]
+							gameEvents.ScoreEvents = append(gameEvents.ScoreEvents, resources.ScoreEvent{Score: 100})
 						case resources.AlienLoop2Animation:
 							newAlienAnimation = alienSprite.SpriteSheet.Animations[resources.AlienDeath2Animation]
+							gameEvents.ScoreEvents = append(gameEvents.ScoreEvents, resources.ScoreEvent{Score: 200})
 						case resources.AlienLoop3Animation:
 							newAlienAnimation = alienSprite.SpriteSheet.Animations[resources.AlienDeath3Animation]
+							gameEvents.ScoreEvents = append(gameEvents.ScoreEvents, resources.ScoreEvent{Score: 300})
 						case resources.AlienMasterLoopAnimation:
 							newAlienAnimation = alienSprite.SpriteSheet.Animations[resources.AlienMasterDeathAnimation]
+							gameEvents.ScoreEvents = append(gameEvents.ScoreEvents, resources.ScoreEvent{Score: 1000})
 						default:
 							utils.LogError(fmt.Errorf("unknown animation name: '%s'", key))
 						}
@@ -161,6 +165,7 @@ func CollisionSystem(world w.World) {
 
 				world.Manager.DeleteEntity(enemyBulletEntity)
 				gameEvents.LifeEvents = append(gameEvents.LifeEvents, resources.LifeEvent{})
+				gameEvents.ScoreEvents = append(gameEvents.ScoreEvents, resources.ScoreEvent{Score: -1000})
 				return true
 			})
 	}))

@@ -62,7 +62,8 @@ func (st *MainMenuState) OnResume(world w.World) {}
 
 // OnStart method
 func (st *MainMenuState) OnStart(world w.World) {
-	st.mainMenu = loader.LoadEntities("assets/metadata/entities/ui/main_menu.toml", world)
+	st.mainMenu = append(st.mainMenu, loader.LoadEntities("assets/metadata/entities/background.toml", world)...)
+	st.mainMenu = append(st.mainMenu, loader.LoadEntities("assets/metadata/entities/ui/main_menu.toml", world)...)
 }
 
 // OnStop method
