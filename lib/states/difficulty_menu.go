@@ -3,10 +3,10 @@ package states
 import (
 	"fmt"
 
-	"github.com/x-hgg-x/space-invaders-go/lib/loader"
 	"github.com/x-hgg-x/space-invaders-go/lib/resources"
 
 	ecs "github.com/x-hgg-x/goecs"
+	"github.com/x-hgg-x/goecsengine/loader"
 	"github.com/x-hgg-x/goecsengine/states"
 	w "github.com/x-hgg-x/goecsengine/world"
 
@@ -67,8 +67,9 @@ func (st *DifficultyMenuState) OnResume(world w.World) {}
 
 // OnStart method
 func (st *DifficultyMenuState) OnStart(world w.World) {
-	st.difficultyMenu = append(st.difficultyMenu, loader.LoadEntities("assets/metadata/entities/background.toml", world)...)
-	st.difficultyMenu = append(st.difficultyMenu, loader.LoadEntities("assets/metadata/entities/ui/difficulty_menu.toml", world)...)
+	prefabs := world.Resources.Prefabs.(*resources.Prefabs)
+	st.difficultyMenu = append(st.difficultyMenu, loader.AddEntities(world, prefabs.Game.Background)...)
+	st.difficultyMenu = append(st.difficultyMenu, loader.AddEntities(world, prefabs.Menu.DifficultyMenu)...)
 
 	// Default difficulty is normal
 	st.setSelection(1)

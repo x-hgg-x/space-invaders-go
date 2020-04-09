@@ -3,10 +3,10 @@ package states
 import (
 	"fmt"
 
-	"github.com/x-hgg-x/space-invaders-go/lib/loader"
 	"github.com/x-hgg-x/space-invaders-go/lib/resources"
 
 	ecs "github.com/x-hgg-x/goecs"
+	"github.com/x-hgg-x/goecsengine/loader"
 	"github.com/x-hgg-x/goecsengine/states"
 	w "github.com/x-hgg-x/goecsengine/world"
 
@@ -64,7 +64,8 @@ func (st *LevelCompleteState) OnResume(world w.World) {}
 
 // OnStart method
 func (st *LevelCompleteState) OnStart(world w.World) {
-	st.levelCompleteMenu = loader.LoadEntities("assets/metadata/entities/ui/level_complete_menu.toml", world)
+	prefabs := world.Resources.Prefabs.(*resources.Prefabs)
+	st.levelCompleteMenu = append(st.levelCompleteMenu, loader.AddEntities(world, prefabs.Menu.LevelCompleteMenu)...)
 }
 
 // OnStop method

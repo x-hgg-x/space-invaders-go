@@ -4,11 +4,11 @@ import (
 	"math/rand"
 
 	gc "github.com/x-hgg-x/space-invaders-go/lib/components"
-	"github.com/x-hgg-x/space-invaders-go/lib/loader"
 	"github.com/x-hgg-x/space-invaders-go/lib/resources"
 
 	ecs "github.com/x-hgg-x/goecs"
 	ec "github.com/x-hgg-x/goecsengine/components"
+	"github.com/x-hgg-x/goecsengine/loader"
 	"github.com/x-hgg-x/goecsengine/math"
 	w "github.com/x-hgg-x/goecsengine/world"
 
@@ -41,7 +41,7 @@ func ShootEnemyBulletSystem(world w.World) {
 		alienHeight := gameComponents.Alien.Get(alienEntity).(*gc.Alien).Height
 		alienTranslation := world.Components.Engine.Transform.Get(alienEntity).(*ec.Transform).Translation
 
-		enemyBulletEntity := loader.LoadEntities("assets/metadata/entities/enemy_bullet.toml", world)
+		enemyBulletEntity := loader.AddEntities(world, world.Resources.Prefabs.(*resources.Prefabs).Game.EnemyBullet)
 		for iEntity := range enemyBulletEntity {
 			enemyBulletHeight := gameComponents.Bullet.Get(enemyBulletEntity[iEntity]).(*gc.Bullet).Height
 			enemyBulletTransform := world.Components.Engine.Transform.Get(enemyBulletEntity[iEntity]).(*ec.Transform)

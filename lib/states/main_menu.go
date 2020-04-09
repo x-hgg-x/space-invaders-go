@@ -3,9 +3,10 @@ package states
 import (
 	"fmt"
 
-	"github.com/x-hgg-x/space-invaders-go/lib/loader"
+	"github.com/x-hgg-x/space-invaders-go/lib/resources"
 
 	ecs "github.com/x-hgg-x/goecs"
+	"github.com/x-hgg-x/goecsengine/loader"
 	"github.com/x-hgg-x/goecsengine/states"
 	w "github.com/x-hgg-x/goecsengine/world"
 
@@ -63,8 +64,9 @@ func (st *MainMenuState) OnResume(world w.World) {}
 
 // OnStart method
 func (st *MainMenuState) OnStart(world w.World) {
-	st.mainMenu = append(st.mainMenu, loader.LoadEntities("assets/metadata/entities/background.toml", world)...)
-	st.mainMenu = append(st.mainMenu, loader.LoadEntities("assets/metadata/entities/ui/main_menu.toml", world)...)
+	prefabs := world.Resources.Prefabs.(*resources.Prefabs)
+	st.mainMenu = append(st.mainMenu, loader.AddEntities(world, prefabs.Game.Background)...)
+	st.mainMenu = append(st.mainMenu, loader.AddEntities(world, prefabs.Menu.MainMenu)...)
 }
 
 // OnStop method

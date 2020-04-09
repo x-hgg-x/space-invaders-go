@@ -2,10 +2,11 @@ package states
 
 import (
 	gc "github.com/x-hgg-x/space-invaders-go/lib/components"
-	"github.com/x-hgg-x/space-invaders-go/lib/loader"
+	"github.com/x-hgg-x/space-invaders-go/lib/resources"
 
 	ecs "github.com/x-hgg-x/goecs"
 	ec "github.com/x-hgg-x/goecsengine/components"
+	"github.com/x-hgg-x/goecsengine/loader"
 	"github.com/x-hgg-x/goecsengine/math"
 	"github.com/x-hgg-x/goecsengine/states"
 	w "github.com/x-hgg-x/goecsengine/world"
@@ -87,5 +88,5 @@ func resurrectPlayer(world w.World) {
 	}))
 
 	// Resurrect player
-	loader.LoadEntities("assets/metadata/entities/player.toml", world)
+	loader.AddEntities(world, world.Resources.Prefabs.(*resources.Prefabs).Game.Player)
 }

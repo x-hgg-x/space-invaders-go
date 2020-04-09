@@ -5,12 +5,13 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/x-hgg-x/space-invaders-go/lib/loader"
+	gloader "github.com/x-hgg-x/space-invaders-go/lib/loader"
 	"github.com/x-hgg-x/space-invaders-go/lib/resources"
 	g "github.com/x-hgg-x/space-invaders-go/lib/systems"
 
 	ecs "github.com/x-hgg-x/goecs"
 	ec "github.com/x-hgg-x/goecsengine/components"
+	"github.com/x-hgg-x/goecsengine/loader"
 	"github.com/x-hgg-x/goecsengine/states"
 	"github.com/x-hgg-x/goecsengine/utils"
 	w "github.com/x-hgg-x/goecsengine/world"
@@ -31,16 +32,17 @@ func (st *GameplayState) OnStart(world w.World) {
 	rand.Seed(time.Now().UnixNano())
 
 	// Load game and ui entities
-	loader.LoadEntities("assets/metadata/entities/background.toml", world)
-	loader.LoadEntities("assets/metadata/entities/alien.toml", world)
-	loader.LoadEntities("assets/metadata/entities/player.toml", world)
-	loader.LoadEntities("assets/metadata/entities/player_line.toml", world)
-	scoreEntity := loader.LoadEntities("assets/metadata/entities/ui/score.toml", world)
-	lifeEntity := loader.LoadEntities("assets/metadata/entities/ui/life.toml", world)
-	difficultyEntity := loader.LoadEntities("assets/metadata/entities/ui/difficulty.toml", world)
+	prefabs := world.Resources.Prefabs.(*resources.Prefabs)
+	loader.AddEntities(world, prefabs.Game.Background)
+	loader.AddEntities(world, prefabs.Game.Alien)
+	loader.AddEntities(world, prefabs.Game.Player)
+	loader.AddEntities(world, prefabs.Game.PlayerLine)
+	scoreEntity := loader.AddEntities(world, prefabs.Game.Score)
+	lifeEntity := loader.AddEntities(world, prefabs.Game.Life)
+	difficultyEntity := loader.AddEntities(world, prefabs.Game.Difficulty)
 
 	// Load bunkers
-	loader.LoadBunkers("assets/metadata/entities/bunker.toml", world)
+	gloader.LoadBunkers(world)
 
 	// Set game
 	world.Resources.Game = st.game

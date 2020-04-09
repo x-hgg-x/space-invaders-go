@@ -2,11 +2,11 @@ package systems
 
 import (
 	gc "github.com/x-hgg-x/space-invaders-go/lib/components"
-	"github.com/x-hgg-x/space-invaders-go/lib/loader"
 	"github.com/x-hgg-x/space-invaders-go/lib/resources"
 
 	ecs "github.com/x-hgg-x/goecs"
 	ec "github.com/x-hgg-x/goecsengine/components"
+	"github.com/x-hgg-x/goecsengine/loader"
 	"github.com/x-hgg-x/goecsengine/math"
 	w "github.com/x-hgg-x/goecsengine/world"
 
@@ -34,7 +34,7 @@ func ShootPlayerBulletSystem(world w.World) {
 		}
 		playerX := world.Components.Engine.Transform.Get(ecs.Entity(*firstPlayer)).(*ec.Transform).Translation.X
 
-		playerBulletEntity := loader.LoadEntities("assets/metadata/entities/player_bullet.toml", world)
+		playerBulletEntity := loader.AddEntities(world, world.Resources.Prefabs.(*resources.Prefabs).Game.PlayerBullet)
 		for iEntity := range playerBulletEntity {
 			playerBulletTransform := world.Components.Engine.Transform.Get(playerBulletEntity[iEntity]).(*ec.Transform)
 			playerBulletTransform.Translation.X = playerX

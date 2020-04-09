@@ -5,6 +5,7 @@ import (
 	"image/color"
 
 	gc "github.com/x-hgg-x/space-invaders-go/lib/components"
+	"github.com/x-hgg-x/space-invaders-go/lib/resources"
 
 	ecs "github.com/x-hgg-x/goecs"
 	ec "github.com/x-hgg-x/goecsengine/components"
@@ -50,14 +51,16 @@ func loadGameComponents(entityMetadataPath string, world w.World) []interface{} 
 	return gameComponentList
 }
 
-// LoadEntities creates entities with components from a TOML file
-func LoadEntities(entityMetadataPath string, world w.World) []ecs.Entity {
-	gameComponentList := loadGameComponents(entityMetadataPath, world)
-	return loader.LoadEntities(entityMetadataPath, world, gameComponentList)
+// PreloadEntities preloads entities with components
+func PreloadEntities(entityMetadataPath string, world w.World) loader.EntityComponentList {
+	return loader.EntityComponentList{
+		Engine: loader.LoadEngineComponents(entityMetadataPath, world),
+		Game:   loadGameComponents(entityMetadataPath, world),
+	}
 }
 
-// LoadBunkers creates pixel bunker entities for each bunker from a TOML file
-func LoadBunkers(entityBunkerMetadataPath string, world w.World) []ecs.Entity {
+// LoadBunkers creates pixel bunker entities for each bunker
+func LoadBunkers(world w.World) []ecs.Entity {
 	gameComponents := world.Components.Game.(*gc.Components)
 
 	// Get bunker image path
@@ -79,7 +82,7 @@ func LoadBunkers(entityBunkerMetadataPath string, world w.World) []ecs.Entity {
 	utils.LogError(err)
 
 	// Load bunker entities
-	bunkerEntities := LoadEntities(entityBunkerMetadataPath, world)
+	bunkerEntities := loader.AddEntities(world, world.Resources.Prefabs.(*resources.Prefabs).Game.Bunker)
 	if len(bunkerEntities) == 0 {
 		return []ecs.Entity{}
 	}
@@ -112,7 +115,7 @@ func LoadBunkers(entityBunkerMetadataPath string, world w.World) []ecs.Entity {
 						AddComponent(world.Components.Engine.SpriteRender, &ec.SpriteRender{
 							SpriteSheet: &ec.SpriteSheet{
 								Texture: ec.Texture{Image: pixelImage},
-								Sprites: []ec.Sprite{ec.Sprite{X: 0, Y: 0, Width: pixelSize, Height: pixelSize}},
+								Sprites: []ec.Sprite{{X: 0, Y: 0, Width: pixelSize, Height: pixelSize}},
 							},
 							SpriteNumber: 0,
 						}).
