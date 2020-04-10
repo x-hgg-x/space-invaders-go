@@ -39,5 +39,9 @@ func ShootPlayerBulletSystem(world w.World) {
 			playerBulletTransform := world.Components.Engine.Transform.Get(playerBulletEntity[iEntity]).(*ec.Transform)
 			playerBulletTransform.Translation.X = playerX
 		}
+		if world.Resources.AudioContext != nil {
+			(*world.Resources.AudioPlayers)["shoot"].Rewind()
+			(*world.Resources.AudioPlayers)["shoot"].Play()
+		}
 	}
 }

@@ -124,6 +124,7 @@ func (st *HighscoresState) Update(world w.World, screen *ebiten.Image) states.Tr
 
 			// Save highscores
 			f, err := os.Create("config/highscores.toml")
+			defer f.Close()
 			utils.LogError(err)
 			e := toml.NewEncoder(f)
 			e.Indent = "	"

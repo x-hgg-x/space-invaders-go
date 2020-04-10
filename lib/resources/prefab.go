@@ -4,6 +4,7 @@ import "github.com/x-hgg-x/goecsengine/loader"
 
 // MenuPrefabs contains menu prefabs
 type MenuPrefabs struct {
+	MuteMenu          loader.EntityComponentList
 	MainMenu          loader.EntityComponentList
 	DifficultyMenu    loader.EntityComponentList
 	PauseMenu         loader.EntityComponentList

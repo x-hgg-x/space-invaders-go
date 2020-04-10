@@ -63,6 +63,7 @@ func main() {
 	// Load prefabs
 	world.Resources.Prefabs = &gr.Prefabs{
 		Menu: gr.MenuPrefabs{
+			MuteMenu:          gloader.PreloadEntities("assets/metadata/entities/ui/mute_menu.toml", world),
 			MainMenu:          gloader.PreloadEntities("assets/metadata/entities/ui/main_menu.toml", world),
 			DifficultyMenu:    gloader.PreloadEntities("assets/metadata/entities/ui/difficulty_menu.toml", world),
 			PauseMenu:         gloader.PreloadEntities("assets/metadata/entities/ui/pause_menu.toml", world),
@@ -89,5 +90,5 @@ func main() {
 	ebiten.SetWindowSize(windowWidth, windowHeight)
 	ebiten.SetWindowTitle("Space invaders")
 
-	utils.LogError(ebiten.RunGame(&mainGame{world, es.Init(&gs.MainMenuState{}, world)}))
+	utils.LogError(ebiten.RunGame(&mainGame{world, es.Init(&gs.MuteMenuState{}, world)}))
 }

@@ -3,6 +3,7 @@ package states
 import (
 	"fmt"
 
+	gloader "github.com/x-hgg-x/space-invaders-go/lib/loader"
 	"github.com/x-hgg-x/space-invaders-go/lib/resources"
 
 	ecs "github.com/x-hgg-x/goecs"
@@ -18,6 +19,7 @@ import (
 type MainMenuState struct {
 	mainMenu  []ecs.Entity
 	selection int
+	sound     bool
 }
 
 //
@@ -72,6 +74,11 @@ func (st *MainMenuState) OnStart(world w.World) {
 	prefabs := world.Resources.Prefabs.(*resources.Prefabs)
 	st.mainMenu = append(st.mainMenu, loader.AddEntities(world, prefabs.Game.Background)...)
 	st.mainMenu = append(st.mainMenu, loader.AddEntities(world, prefabs.Menu.MainMenu)...)
+
+	// Load music and sfx
+	if st.sound {
+		gloader.LoadSounds(world)
+	}
 }
 
 // OnStop method

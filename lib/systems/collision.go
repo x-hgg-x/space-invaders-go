@@ -107,6 +107,11 @@ func CollisionSystem(world w.World) {
 				}
 				alienEntity.RemoveComponent(gameComponents.Alien).AddComponent(gameComponents.Deleted, &gc.Deleted{})
 
+				if world.Resources.AudioContext != nil {
+					(*world.Resources.AudioPlayers)["killed"].Rewind()
+					(*world.Resources.AudioPlayers)["killed"].Play()
+				}
+
 				// Skip other aliens
 				return true
 			})
@@ -166,6 +171,11 @@ func CollisionSystem(world w.World) {
 				world.Manager.DeleteEntity(enemyBulletEntity)
 				gameEvents.LifeEvents = append(gameEvents.LifeEvents, resources.LifeEvent{})
 				gameEvents.ScoreEvents = append(gameEvents.ScoreEvents, resources.ScoreEvent{Score: -1000})
+
+				if world.Resources.AudioContext != nil {
+					(*world.Resources.AudioPlayers)["explosion"].Rewind()
+					(*world.Resources.AudioPlayers)["explosion"].Play()
+				}
 				return true
 			})
 	}))
