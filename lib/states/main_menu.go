@@ -5,6 +5,7 @@ import (
 
 	gloader "github.com/x-hgg-x/space-invaders-go/lib/loader"
 	"github.com/x-hgg-x/space-invaders-go/lib/resources"
+	g "github.com/x-hgg-x/space-invaders-go/lib/systems"
 
 	ecs "github.com/x-hgg-x/goecs"
 	"github.com/x-hgg-x/goecsengine/loader"
@@ -75,9 +76,9 @@ func (st *MainMenuState) OnStart(world w.World) {
 	st.mainMenu = append(st.mainMenu, loader.AddEntities(world, prefabs.Game.Background)...)
 	st.mainMenu = append(st.mainMenu, loader.AddEntities(world, prefabs.Menu.MainMenu)...)
 
-	// Load music and sfx
-	if st.sound {
-		gloader.LoadSounds(world)
+	// Load music and sfx (at game start only)
+	if world.Resources.AudioContext == nil {
+		gloader.LoadSounds(world, st.sound)
 	}
 }
 
@@ -88,6 +89,8 @@ func (st *MainMenuState) OnStop(world w.World) {
 
 // Update method
 func (st *MainMenuState) Update(world w.World, screen *ebiten.Image) states.Transition {
+	g.SoundSystem(world)
+
 	if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {
 		return states.Transition{Type: states.TransQuit}
 	}

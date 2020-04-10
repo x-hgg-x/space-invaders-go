@@ -17,6 +17,7 @@ func CollisionSystem(world w.World) {
 	gameComponents := world.Components.Game.(*gc.Components)
 	gameResources := world.Resources.Game.(*resources.Game)
 	gameEvents := &gameResources.Events
+	audioPlayers := *world.Resources.AudioPlayers
 
 	screenHeight := float64(world.Resources.ScreenDimensions.Height)
 
@@ -107,10 +108,8 @@ func CollisionSystem(world w.World) {
 				}
 				alienEntity.RemoveComponent(gameComponents.Alien).AddComponent(gameComponents.Deleted, &gc.Deleted{})
 
-				if world.Resources.AudioContext != nil {
-					(*world.Resources.AudioPlayers)["killed"].Rewind()
-					(*world.Resources.AudioPlayers)["killed"].Play()
-				}
+				audioPlayers["killed"].Rewind()
+				audioPlayers["killed"].Play()
 
 				// Skip other aliens
 				return true
@@ -172,10 +171,8 @@ func CollisionSystem(world w.World) {
 				gameEvents.LifeEvents = append(gameEvents.LifeEvents, resources.LifeEvent{})
 				gameEvents.ScoreEvents = append(gameEvents.ScoreEvents, resources.ScoreEvent{Score: -1000})
 
-				if world.Resources.AudioContext != nil {
-					(*world.Resources.AudioPlayers)["explosion"].Rewind()
-					(*world.Resources.AudioPlayers)["explosion"].Play()
-				}
+				audioPlayers["explosion"].Rewind()
+				audioPlayers["explosion"].Play()
 				return true
 			})
 	}))

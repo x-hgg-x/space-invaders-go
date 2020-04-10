@@ -3,6 +3,7 @@ package states
 import (
 	gc "github.com/x-hgg-x/space-invaders-go/lib/components"
 	"github.com/x-hgg-x/space-invaders-go/lib/resources"
+	g "github.com/x-hgg-x/space-invaders-go/lib/systems"
 
 	ecs "github.com/x-hgg-x/goecs"
 	ec "github.com/x-hgg-x/goecsengine/components"
@@ -51,6 +52,8 @@ func (st *DeathState) OnStop(world w.World) {
 
 // Update method
 func (st *DeathState) Update(world w.World, screen *ebiten.Image) states.Transition {
+	g.SoundSystem(world)
+
 	if st.playerAnimation.GetState().Type == ec.ControlStateDone {
 		gameResources := world.Resources.Game.(*resources.Game)
 		if gameResources.Lives <= 0 {

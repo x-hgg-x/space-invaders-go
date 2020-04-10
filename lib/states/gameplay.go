@@ -112,11 +112,13 @@ func (st *GameplayState) OnStop(world w.World) {
 
 // Update method
 func (st *GameplayState) Update(world w.World, screen *ebiten.Image) states.Transition {
-	if world.Resources.AudioContext != nil && !(*world.Resources.AudioPlayers)["music"].IsPlaying() {
-		(*world.Resources.AudioPlayers)["music"].Rewind()
-		(*world.Resources.AudioPlayers)["music"].Play()
+	musicPlayer := (*world.Resources.AudioPlayers)["music"]
+	if !musicPlayer.IsPlaying() {
+		musicPlayer.Rewind()
+		musicPlayer.Play()
 	}
 
+	g.SoundSystem(world)
 	g.MovePlayerSystem(world)
 	g.SpawnAlienMasterSystem(world)
 	g.MoveAlienMasterSystem(world)

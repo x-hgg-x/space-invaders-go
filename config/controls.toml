@@ -5,6 +5,10 @@ mouse_axis = { axis = 0 }
 [controls.actions.Shoot]
 combinations = [[{ mouse_button = "MouseButtonLeft" }], [{ key = "Z" }]]
 
+[controls.actions.EnableDisableSound]
+combinations = [[{ key = "M" }]]
+once = true
+
 
 # Usage
 

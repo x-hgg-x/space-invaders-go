@@ -47,7 +47,7 @@ func main() {
 
 	// Load controls
 	axes := []string{gr.PlayerAxis}
-	actions := []string{gr.ShootAction}
+	actions := []string{gr.ShootAction, gr.EnableDisableSoundAction}
 	controls, inputHandler := loader.LoadControls("config/controls.toml", axes, actions)
 	world.Resources.Controls = &controls
 	world.Resources.InputHandler = &inputHandler

@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/x-hgg-x/space-invaders-go/lib/resources"
+	g "github.com/x-hgg-x/space-invaders-go/lib/systems"
 
 	ecs "github.com/x-hgg-x/goecs"
 	"github.com/x-hgg-x/goecsengine/loader"
@@ -82,6 +83,8 @@ func (st *DifficultyMenuState) OnStop(world w.World) {
 
 // Update method
 func (st *DifficultyMenuState) Update(world w.World, screen *ebiten.Image) states.Transition {
+	g.SoundSystem(world)
+
 	if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {
 		return states.Transition{Type: states.TransSwitch, NewStates: []states.State{&MainMenuState{}}}
 	}

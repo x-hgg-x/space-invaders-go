@@ -20,6 +20,7 @@ func ShootPlayerBulletSystem(world w.World) {
 	shootPlayerBulletFrame--
 
 	gameComponents := world.Components.Game.(*gc.Components)
+	audioPlayers := *world.Resources.AudioPlayers
 
 	if world.Manager.Join(gameComponents.Player, gameComponents.Bullet).Empty() {
 		shootPlayerBulletFrame = math.Min(ebiten.DefaultTPS/20, shootPlayerBulletFrame)
@@ -39,9 +40,8 @@ func ShootPlayerBulletSystem(world w.World) {
 			playerBulletTransform := world.Components.Engine.Transform.Get(playerBulletEntity[iEntity]).(*ec.Transform)
 			playerBulletTransform.Translation.X = playerX
 		}
-		if world.Resources.AudioContext != nil {
-			(*world.Resources.AudioPlayers)["shoot"].Rewind()
-			(*world.Resources.AudioPlayers)["shoot"].Play()
-		}
+
+		audioPlayers["shoot"].Rewind()
+		audioPlayers["shoot"].Play()
 	}
 }

@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/x-hgg-x/space-invaders-go/lib/resources"
+	g "github.com/x-hgg-x/space-invaders-go/lib/systems"
 
 	ecs "github.com/x-hgg-x/goecs"
 	"github.com/x-hgg-x/goecsengine/loader"
@@ -78,5 +79,7 @@ func (st *GameOverState) OnStop(world w.World) {
 
 // Update method
 func (st *GameOverState) Update(world w.World, screen *ebiten.Image) states.Transition {
+	g.SoundSystem(world)
+
 	return updateMenu(st, world)
 }
