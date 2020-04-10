@@ -52,6 +52,11 @@ func (st *DeathState) OnStop(world w.World) {
 // Update method
 func (st *DeathState) Update(world w.World, screen *ebiten.Image) states.Transition {
 	if st.playerAnimation.GetState().Type == ec.ControlStateDone {
+		gameResources := world.Resources.Game.(*resources.Game)
+		if gameResources.Lives <= 0 {
+			return states.Transition{Type: states.TransSwitch, NewStates: []states.State{&GameOverState{difficulty: gameResources.Difficulty}}}
+		}
+
 		world.Manager.DeleteEntity(st.playerEntity)
 		resurrectPlayer(world)
 		return states.Transition{Type: states.TransPop}

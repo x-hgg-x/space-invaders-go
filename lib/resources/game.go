@@ -21,7 +21,6 @@ type StateEvent int
 const (
 	StateEventNone StateEvent = iota
 	StateEventDeath
-	StateEventGameOver
 	StateEventLevelComplete
 )
 

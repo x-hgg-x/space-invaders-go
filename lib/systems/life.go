@@ -37,9 +37,6 @@ func LifeSystem(world w.World) {
 		}))
 
 		gameResources.StateEvent = resources.StateEventDeath
-		if gameResources.Lives <= 0 {
-			gameResources.StateEvent = resources.StateEventGameOver
-		}
 		break
 	}
 	gameResources.Events.LifeEvents = nil

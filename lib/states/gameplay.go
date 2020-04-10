@@ -133,9 +133,6 @@ func (st *GameplayState) Update(world w.World, screen *ebiten.Image) states.Tran
 	case resources.StateEventDeath:
 		gameResources.StateEvent = resources.StateEventNone
 		return states.Transition{Type: states.TransPush, NewStates: []states.State{&DeathState{}}}
-	case resources.StateEventGameOver:
-		gameResources.StateEvent = resources.StateEventNone
-		return states.Transition{Type: states.TransPush, NewStates: []states.State{&GameOverState{difficulty: gameResources.Difficulty}}}
 	case resources.StateEventLevelComplete:
 		gameResources.StateEvent = resources.StateEventNone
 		return states.Transition{Type: states.TransPush, NewStates: []states.State{&LevelCompleteState{game: gameResources}}}
