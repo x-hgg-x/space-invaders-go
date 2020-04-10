@@ -21,7 +21,7 @@ func LifeSystem(world w.World) {
 
 		world.Manager.Join(world.Components.Engine.Text, world.Components.Engine.UITransform).Visit(ecs.Visit(func(entity ecs.Entity) {
 			text := world.Components.Engine.Text.Get(entity).(*ec.Text)
-			if text.ID == "life" {
+			if text.ID == "game_life" {
 				text.Text = fmt.Sprintf("LIVES: %d", gameResources.Lives)
 			}
 		}))

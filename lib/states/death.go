@@ -54,7 +54,10 @@ func (st *DeathState) Update(world w.World, screen *ebiten.Image) states.Transit
 	if st.playerAnimation.GetState().Type == ec.ControlStateDone {
 		gameResources := world.Resources.Game.(*resources.Game)
 		if gameResources.Lives <= 0 {
-			return states.Transition{Type: states.TransSwitch, NewStates: []states.State{&GameOverState{difficulty: gameResources.Difficulty}}}
+			return states.Transition{Type: states.TransSwitch, NewStates: []states.State{&HighscoresState{
+				newScore:       &highscore{difficulty: gameResources.Difficulty, score: gameResources.Score},
+				exitTransition: states.Transition{Type: states.TransSwitch, NewStates: []states.State{&GameOverState{difficulty: gameResources.Difficulty}}},
+			}}}
 		}
 
 		world.Manager.DeleteEntity(st.playerEntity)

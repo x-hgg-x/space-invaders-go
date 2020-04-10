@@ -38,6 +38,11 @@ func (st *MainMenuState) confirmSelection() states.Transition {
 		// New game
 		return states.Transition{Type: states.TransSwitch, NewStates: []states.State{&DifficultyMenuState{}}}
 	case 1:
+		// Highscores
+		return states.Transition{Type: states.TransSwitch, NewStates: []states.State{&HighscoresState{
+			exitTransition: states.Transition{Type: states.TransSwitch, NewStates: []states.State{&MainMenuState{}}},
+		}}}
+	case 2:
 		// Exit
 		return states.Transition{Type: states.TransQuit}
 	}
@@ -45,11 +50,11 @@ func (st *MainMenuState) confirmSelection() states.Transition {
 }
 
 func (st *MainMenuState) getMenuIDs() []string {
-	return []string{"new_game", "exit"}
+	return []string{"new_game", "highscores", "exit"}
 }
 
 func (st *MainMenuState) getCursorMenuIDs() []string {
-	return []string{"cursor_new_game", "cursor_exit"}
+	return []string{"cursor_new_game", "cursor_highscores", "cursor_exit"}
 }
 
 //

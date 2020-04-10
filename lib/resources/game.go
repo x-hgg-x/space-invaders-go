@@ -47,3 +47,21 @@ type Game struct {
 func NewGame(difficulty Difficulty) *Game {
 	return &Game{Difficulty: difficulty, Lives: 3}
 }
+
+// Score is a game score
+type Score struct {
+	Score  int
+	Author string
+}
+
+// ScoreTable contains highscores for a single difficulty
+type ScoreTable struct {
+	Scores []Score
+}
+
+// Highscores contains all highscores
+type Highscores struct {
+	Easy   ScoreTable
+	Normal ScoreTable
+	Hard   ScoreTable
+}

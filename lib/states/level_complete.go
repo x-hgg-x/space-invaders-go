@@ -39,7 +39,10 @@ func (st *LevelCompleteState) confirmSelection() states.Transition {
 		return states.Transition{Type: states.TransReplace, NewStates: []states.State{&GameplayState{game: st.game}}}
 	case 1:
 		// Main Menu
-		return states.Transition{Type: states.TransReplace, NewStates: []states.State{&MainMenuState{}}}
+		return states.Transition{Type: states.TransSwitch, NewStates: []states.State{&HighscoresState{
+			newScore:       &highscore{difficulty: st.game.Difficulty, score: st.game.Score},
+			exitTransition: states.Transition{Type: states.TransReplace, NewStates: []states.State{&MainMenuState{}}},
+		}}}
 	}
 	panic(fmt.Errorf("unknown selection: %d", st.selection))
 }
