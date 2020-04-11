@@ -146,7 +146,7 @@ func (st *HighscoresState) Update(world w.World, screen *ebiten.Image) states.Tr
 		}
 
 		// Exit
-		if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {
+		if inpututil.IsKeyJustPressed(ebiten.KeyEscape) || inpututil.IsKeyJustPressed(ebiten.KeyEnter) || inpututil.IsKeyJustPressed(ebiten.KeySpace) {
 			return st.exitTransition
 		}
 	}
