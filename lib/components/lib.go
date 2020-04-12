@@ -1,21 +1,21 @@
 package components
 
 import (
-	ecs "github.com/x-hgg-x/goecs"
+	ecs "github.com/x-hgg-x/goecs/v2"
 	"github.com/x-hgg-x/goecsengine/math"
 )
 
 // Components contains references to all game components
 type Components struct {
-	Player       *ecs.Component
-	Enemy        *ecs.Component
-	Controllable *ecs.Component
-	Alien        *ecs.Component
-	AlienMaster  *ecs.Component
-	Bunker       *ecs.Component
-	Bullet       *ecs.Component
-	PlayerLine   *ecs.Component
-	Deleted      *ecs.Component
+	Player       *ecs.NullComponent
+	Enemy        *ecs.NullComponent
+	Controllable *ecs.SliceComponent
+	Alien        *ecs.SliceComponent
+	AlienMaster  *ecs.SliceComponent
+	Bunker       *ecs.SliceComponent
+	Bullet       *ecs.SliceComponent
+	PlayerLine   *ecs.NullComponent
+	Deleted      *ecs.NullComponent
 }
 
 // Player component
