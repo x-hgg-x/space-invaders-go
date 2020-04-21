@@ -2,7 +2,7 @@
 
     [entity.components.Text]
     id = "title"
-    text = "Space invaders"
+    text = "Space Invaders"
     font_face = { font = "joystix", options = { size = 75.0, hinting = "Full" } }
     color = [255, 255, 255, 255]
 

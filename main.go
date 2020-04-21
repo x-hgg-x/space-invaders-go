@@ -88,7 +88,7 @@ func main() {
 
 	ebiten.SetWindowResizable(true)
 	ebiten.SetWindowSize(windowWidth, windowHeight)
-	ebiten.SetWindowTitle("Space invaders")
+	ebiten.SetWindowTitle("Space Invaders")
 
 	utils.LogError(ebiten.RunGame(&mainGame{world, es.Init(&gs.MuteMenuState{}, world)}))
 }
