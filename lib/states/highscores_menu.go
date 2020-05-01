@@ -18,9 +18,9 @@ import (
 	"github.com/x-hgg-x/goecsengine/utils"
 	w "github.com/x-hgg-x/goecsengine/world"
 
-	"github.com/BurntSushi/toml"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/inpututil"
+	"github.com/x-hgg-x/go-toml"
 )
 
 const highscoreNum = 9
@@ -60,7 +60,9 @@ func (st *HighscoresState) OnStart(world w.World) {
 	st.difficulties = []resources.Difficulty{resources.DifficultyEasy, resources.DifficultyNormal, resources.DifficultyHard}
 
 	// Load highscores
-	toml.DecodeFile("config/highscores.toml", &st.highscores)
+	if tree, err := toml.LoadFile("config/highscores.toml"); err == nil {
+		tree.Unmarshal(&st.highscores)
+	}
 
 	if st.newScore != nil {
 		st.difficultySelection = find(st.difficulties, st.newScore.difficulty)
@@ -126,9 +128,8 @@ func (st *HighscoresState) Update(world w.World, screen *ebiten.Image) states.Tr
 			f, err := os.Create("config/highscores.toml")
 			defer f.Close()
 			utils.LogError(err)
-			e := toml.NewEncoder(f)
-			e.Indent = "	"
-			err = e.Encode(st.highscores)
+
+			err = toml.NewEncoder(f).Order(toml.OrderPreserve).Indentation("    ").Encode(st.highscores)
 			utils.LogError(err)
 
 			st.displayHighScores(world)

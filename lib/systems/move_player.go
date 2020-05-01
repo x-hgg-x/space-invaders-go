@@ -8,6 +8,7 @@ import (
 
 	ecs "github.com/x-hgg-x/goecs/v2"
 	ec "github.com/x-hgg-x/goecsengine/components"
+	er "github.com/x-hgg-x/goecsengine/resources"
 	w "github.com/x-hgg-x/goecsengine/world"
 
 	"github.com/hajimehoshi/ebiten"
@@ -25,8 +26,8 @@ func MovePlayerSystem(world w.World) {
 		playerX := playerTransform.Translation.X
 		axisValue := world.Resources.InputHandler.Axes[resources.PlayerAxis]
 
-		if world.Resources.Controls.Axes[resources.PlayerAxis].Type == "MouseAxis" {
-			playerX = axisValue * screenWidth
+		if _, ok := world.Resources.Controls.Axes[resources.PlayerAxis].Value.(*er.MouseAxis); ok {
+			playerX = (axisValue + 1) / 2 * screenWidth
 		} else {
 			playerX += axisValue * screenWidth / ebiten.DefaultTPS / 4
 		}

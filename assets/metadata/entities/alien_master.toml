@@ -5,14 +5,12 @@
     sprite_number = 13
 
     [entity.components.Transform]
-    translation = { y = 760.0 }
+    translation.y = 760.0
 
     [entity.components.AnimationControl]
     sprite_sheet_name = "game"
     animation_name = "alien_master_loop"
-    end = { type = "Loop" }
-    command = { type = "Start" }
-    rate_multiplier = 1.0
+    end.type = "Loop"
 
     [entity.components.Enemy]
 

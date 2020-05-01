@@ -10,9 +10,7 @@
     [entity.components.AnimationControl]
     sprite_sheet_name = "game"
     animation_name = "enemy_bullet"
-    end = { type = "Loop" }
-    command = { type = "Start" }
-    rate_multiplier = 1.0
+    end.type = "Loop"
 
     [entity.components.Enemy]
 

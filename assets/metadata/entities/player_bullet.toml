@@ -5,7 +5,7 @@
     sprite_number = 11
 
     [entity.components.Transform]
-    translation = { y = 82.0 }
+    translation.y = 82.0
     depth = 0.5
 
     [entity.components.Player]

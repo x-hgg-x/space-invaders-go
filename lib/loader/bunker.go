@@ -14,9 +14,9 @@ import (
 	"github.com/x-hgg-x/goecsengine/utils"
 	w "github.com/x-hgg-x/goecsengine/world"
 
-	"github.com/BurntSushi/toml"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
+	"github.com/x-hgg-x/go-toml"
 )
 
 // LoadBunkers creates pixel bunker entities for each bunker
@@ -33,8 +33,9 @@ func LoadBunkers(world w.World) []ecs.Entity {
 	}
 
 	var metadata spriteSheetMetadata
-	_, err := toml.DecodeFile("assets/metadata/spritesheets/spritesheets.toml", &metadata)
+	tree, err := toml.LoadFile("assets/metadata/spritesheets/spritesheets.toml")
 	utils.LogError(err)
+	utils.LogError(tree.Unmarshal(&metadata))
 
 	// Load bunker image
 	bunkerImagePath := metadata.SpriteSheets.Bunker.TextureImageName

@@ -13,7 +13,7 @@
     [entity.components.Text]
     id = "score_difficulty"
     text = "NORMAL"
-    font_face = { font = "joystix", options = { size = 40.0, hinting = "Full" } }
+    font_face = { font = "joystix", options.size = 40.0 }
     color = [255, 255, 255, 255]
 
     [entity.components.UITransform]
@@ -25,7 +25,7 @@
     [entity.components.Text]
     id = "score1"
     text = "1. AAAAAA 00000"
-    font_face = { font = "joystix", options = { size = 60.0, hinting = "Full" } }
+    font_face = { font = "joystix", options.size = 60.0 }
     color = [255, 255, 255, 0]
 
     [entity.components.UITransform]
@@ -37,7 +37,7 @@
     [entity.components.Text]
     id = "score2"
     text = "2. AAAAAA 00000"
-    font_face = { font = "joystix", options = { size = 60.0, hinting = "Full" } }
+    font_face = { font = "joystix", options.size = 60.0 }
     color = [255, 255, 255, 0]
 
     [entity.components.UITransform]
@@ -49,7 +49,7 @@
     [entity.components.Text]
     id = "score3"
     text = "3. AAAAAA 00000"
-    font_face = { font = "joystix", options = { size = 60.0, hinting = "Full" } }
+    font_face = { font = "joystix", options.size = 60.0 }
     color = [255, 255, 255, 0]
 
     [entity.components.UITransform]
@@ -61,7 +61,7 @@
     [entity.components.Text]
     id = "score4"
     text = "4. AAAAAA 00000"
-    font_face = { font = "joystix", options = { size = 60.0, hinting = "Full" } }
+    font_face = { font = "joystix", options.size = 60.0 }
     color = [255, 255, 255, 0]
 
     [entity.components.UITransform]
@@ -73,7 +73,7 @@
     [entity.components.Text]
     id = "score5"
     text = "5. AAAAAA 00000"
-    font_face = { font = "joystix", options = { size = 60.0, hinting = "Full" } }
+    font_face = { font = "joystix", options.size = 60.0 }
     color = [255, 255, 255, 0]
 
     [entity.components.UITransform]
@@ -85,7 +85,7 @@
     [entity.components.Text]
     id = "score6"
     text = "6. AAAAAA 00000"
-    font_face = { font = "joystix", options = { size = 60.0, hinting = "Full" } }
+    font_face = { font = "joystix", options.size = 60.0 }
     color = [255, 255, 255, 0]
 
     [entity.components.UITransform]
@@ -97,7 +97,7 @@
     [entity.components.Text]
     id = "score7"
     text = "7. AAAAAA 00000"
-    font_face = { font = "joystix", options = { size = 60.0, hinting = "Full" } }
+    font_face = { font = "joystix", options.size = 60.0 }
     color = [255, 255, 255, 0]
 
     [entity.components.UITransform]
@@ -109,7 +109,7 @@
     [entity.components.Text]
     id = "score8"
     text = "8. AAAAAA 00000"
-    font_face = { font = "joystix", options = { size = 60.0, hinting = "Full" } }
+    font_face = { font = "joystix", options.size = 60.0 }
     color = [255, 255, 255, 0]
 
     [entity.components.UITransform]
@@ -121,7 +121,7 @@
     [entity.components.Text]
     id = "score9"
     text = "9. AAAAAA 00000"
-    font_face = { font = "joystix", options = { size = 60.0, hinting = "Full" } }
+    font_face = { font = "joystix", options.size = 60.0 }
     color = [255, 255, 255, 0]
 
     [entity.components.UITransform]
@@ -133,7 +133,7 @@
     [entity.components.Text]
     id = "arrow_left"
     text = "\u25c0"
-    font_face = { font = "hack", options = { size = 60.0, hinting = "Full" } }
+    font_face = { font = "hack", options.size = 60.0 }
     color = [255, 255, 255, 0]
 
     [entity.components.UITransform]
@@ -145,7 +145,7 @@
     [entity.components.Text]
     id = "arrow_right"
     text = "\u25b6"
-    font_face = { font = "hack", options = { size = 60.0, hinting = "Full" } }
+    font_face = { font = "hack", options.size = 60.0 }
     color = [255, 255, 255, 0]
 
     [entity.components.UITransform]
