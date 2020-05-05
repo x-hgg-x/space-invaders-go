@@ -20,7 +20,7 @@ import (
 
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/inpututil"
-	"github.com/x-hgg-x/go-toml"
+	"github.com/pelletier/go-toml"
 )
 
 const highscoreNum = 9
