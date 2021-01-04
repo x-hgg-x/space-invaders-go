@@ -16,8 +16,8 @@ import (
 	"github.com/x-hgg-x/goecsengine/utils"
 	w "github.com/x-hgg-x/goecsengine/world"
 
-	"github.com/hajimehoshi/ebiten"
-	"github.com/hajimehoshi/ebiten/inpututil"
+	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
 
 // GameplayState is the main game state
@@ -111,7 +111,7 @@ func (st *GameplayState) OnStop(world w.World) {
 }
 
 // Update method
-func (st *GameplayState) Update(world w.World, screen *ebiten.Image) states.Transition {
+func (st *GameplayState) Update(world w.World) states.Transition {
 	musicPlayer := (*world.Resources.AudioPlayers)["music"]
 	if !musicPlayer.IsPlaying() {
 		musicPlayer.Rewind()

@@ -12,7 +12,7 @@ import (
 	"github.com/x-hgg-x/goecsengine/math"
 	w "github.com/x-hgg-x/goecsengine/world"
 
-	"github.com/hajimehoshi/ebiten"
+	"github.com/hajimehoshi/ebiten/v2"
 )
 
 var shootEnemyBulletFrame = ebiten.DefaultTPS

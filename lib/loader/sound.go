@@ -4,7 +4,7 @@ import (
 	"github.com/x-hgg-x/goecsengine/loader"
 	w "github.com/x-hgg-x/goecsengine/world"
 
-	"github.com/hajimehoshi/ebiten/audio"
+	"github.com/hajimehoshi/ebiten/v2/audio"
 )
 
 // LoadSounds loads music and sfx

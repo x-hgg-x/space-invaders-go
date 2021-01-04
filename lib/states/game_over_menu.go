@@ -10,8 +10,6 @@ import (
 	"github.com/x-hgg-x/goecsengine/loader"
 	"github.com/x-hgg-x/goecsengine/states"
 	w "github.com/x-hgg-x/goecsengine/world"
-
-	"github.com/hajimehoshi/ebiten"
 )
 
 // GameOverState is the game over menu state
@@ -78,7 +76,7 @@ func (st *GameOverState) OnStop(world w.World) {
 }
 
 // Update method
-func (st *GameOverState) Update(world w.World, screen *ebiten.Image) states.Transition {
+func (st *GameOverState) Update(world w.World) states.Transition {
 	g.SoundSystem(world)
 
 	return updateMenu(st, world)

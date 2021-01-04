@@ -12,8 +12,8 @@ import (
 	"github.com/x-hgg-x/goecsengine/states"
 	w "github.com/x-hgg-x/goecsengine/world"
 
-	"github.com/hajimehoshi/ebiten"
-	"github.com/hajimehoshi/ebiten/inpututil"
+	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
 
 // DeathState is the player death state
@@ -51,7 +51,7 @@ func (st *DeathState) OnStop(world w.World) {
 }
 
 // Update method
-func (st *DeathState) Update(world w.World, screen *ebiten.Image) states.Transition {
+func (st *DeathState) Update(world w.World) states.Transition {
 	g.SoundSystem(world)
 
 	if st.playerAnimation.GetState().Type == ec.ControlStateDone {

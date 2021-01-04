@@ -11,8 +11,8 @@ import (
 	"github.com/x-hgg-x/goecsengine/states"
 	w "github.com/x-hgg-x/goecsengine/world"
 
-	"github.com/hajimehoshi/ebiten"
-	"github.com/hajimehoshi/ebiten/inpututil"
+	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
 
 // DifficultyMenuState is the difficulty menu state
@@ -82,7 +82,7 @@ func (st *DifficultyMenuState) OnStop(world w.World) {
 }
 
 // Update method
-func (st *DifficultyMenuState) Update(world w.World, screen *ebiten.Image) states.Transition {
+func (st *DifficultyMenuState) Update(world w.World) states.Transition {
 	g.SoundSystem(world)
 
 	if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {

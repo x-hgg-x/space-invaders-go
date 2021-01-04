@@ -18,8 +18,8 @@ import (
 	"github.com/x-hgg-x/goecsengine/utils"
 	w "github.com/x-hgg-x/goecsengine/world"
 
-	"github.com/hajimehoshi/ebiten"
-	"github.com/hajimehoshi/ebiten/inpututil"
+	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/inpututil"
 	"github.com/pelletier/go-toml"
 )
 
@@ -98,7 +98,7 @@ func (st *HighscoresState) OnStop(world w.World) {
 }
 
 // Update method
-func (st *HighscoresState) Update(world w.World, screen *ebiten.Image) states.Transition {
+func (st *HighscoresState) Update(world w.World) states.Transition {
 	if st.newScore != nil {
 		// Set highscore author
 		// Get user input
