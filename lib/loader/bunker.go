@@ -1,7 +1,6 @@
 package loader
 
 import (
-	"fmt"
 	"image/color"
 
 	gc "github.com/x-hgg-x/space-invaders-go/lib/components"
@@ -14,9 +13,9 @@ import (
 	"github.com/x-hgg-x/goecsengine/utils"
 	w "github.com/x-hgg-x/goecsengine/world"
 
+	"github.com/BurntSushi/toml"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
-	"github.com/pelletier/go-toml"
 )
 
 // LoadBunkers creates pixel bunker entities for each bunker
@@ -33,14 +32,10 @@ func LoadBunkers(world w.World) []ecs.Entity {
 	}
 
 	var metadata spriteSheetMetadata
-	tree, err := toml.LoadFile("assets/metadata/spritesheets/spritesheets.toml")
-	utils.LogError(err)
-	utils.LogError(tree.Unmarshal(&metadata))
+	utils.Try(toml.DecodeFile("assets/metadata/spritesheets/spritesheets.toml", &metadata))
 
 	// Load bunker image
-	bunkerImagePath := metadata.SpriteSheets.Bunker.TextureImageName
-	_, bunkerImage, err := ebitenutil.NewImageFromFile(bunkerImagePath)
-	utils.LogError(err)
+	_, bunkerImage := utils.Try2(ebitenutil.NewImageFromFile(metadata.SpriteSheets.Bunker.TextureImageName))
 
 	// Load bunker entities
 	bunkerEntities := loader.AddEntities(world, world.Resources.Prefabs.(*resources.Prefabs).Game.Bunker)
@@ -52,11 +47,10 @@ func LoadBunkers(world w.World) []ecs.Entity {
 	pixelSize := gameComponents.Bunker.Get(bunkerEntities[0]).(*gc.Bunker).PixelSize
 	for _, bunkerEntity := range bunkerEntities {
 		if pixelSize != gameComponents.Bunker.Get(bunkerEntity).(*gc.Bunker).PixelSize {
-			utils.LogError(fmt.Errorf("pixel size must be the same for all bunkers"))
+			utils.LogFatalf("pixel size must be the same for all bunkers")
 		}
 	}
 	pixelImage := ebiten.NewImage(pixelSize, pixelSize)
-	utils.LogError(err)
 	pixelImage.Fill(color.RGBA{0, 255, 0, 255})
 
 	// Create new bunker entities for each set of bunker pixels

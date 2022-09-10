@@ -1,8 +1,6 @@
 package systems
 
 import (
-	"fmt"
-
 	gc "github.com/x-hgg-x/space-invaders-go/lib/components"
 	"github.com/x-hgg-x/space-invaders-go/lib/resources"
 
@@ -92,13 +90,13 @@ func CollisionSystem(world w.World) {
 							newAlienAnimation = alienSprite.SpriteSheet.Animations[resources.AlienMasterDeathAnimation]
 							gameEvents.ScoreEvents = append(gameEvents.ScoreEvents, resources.ScoreEvent{Score: 1000})
 						default:
-							utils.LogError(fmt.Errorf("unknown animation name: '%s'", key))
+							utils.LogFatalf("unknown animation name: '%s'", key)
 						}
 						break
 					}
 				}
 				if newAlienAnimation == nil {
-					utils.LogError(fmt.Errorf("unable to find animation"))
+					utils.LogFatalf("unable to find animation")
 				}
 
 				*alienAnimationControl = ec.AnimationControl{

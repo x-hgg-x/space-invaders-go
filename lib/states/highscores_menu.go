@@ -18,9 +18,9 @@ import (
 	"github.com/x-hgg-x/goecsengine/utils"
 	w "github.com/x-hgg-x/goecsengine/world"
 
+	"github.com/BurntSushi/toml"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
-	"github.com/pelletier/go-toml"
 )
 
 const highscoreNum = 9
@@ -60,9 +60,7 @@ func (st *HighscoresState) OnStart(world w.World) {
 	st.difficulties = []resources.Difficulty{resources.DifficultyEasy, resources.DifficultyNormal, resources.DifficultyHard}
 
 	// Load highscores
-	if tree, err := toml.LoadFile("config/highscores.toml"); err == nil {
-		tree.Unmarshal(&st.highscores)
-	}
+	toml.DecodeFile("config/highscores.toml", &st.highscores)
 
 	if st.newScore != nil {
 		st.difficultySelection = find(st.difficulties, st.newScore.difficulty)
@@ -103,7 +101,7 @@ func (st *HighscoresState) Update(world w.World) states.Transition {
 		// Set highscore author
 		// Get user input
 		re := regexp.MustCompile("[[:^alnum:]]")
-		st.newScore.author += strings.ToUpper(re.ReplaceAllLiteralString(string(ebiten.InputChars()), ""))
+		st.newScore.author += strings.ToUpper(re.ReplaceAllLiteralString(string(ebiten.AppendInputChars(nil)), ""))
 		if len(st.newScore.author) > 6 {
 			st.newScore.author = st.newScore.author[:6]
 		}
@@ -125,12 +123,11 @@ func (st *HighscoresState) Update(world w.World) states.Transition {
 			st.newScore = nil
 
 			// Save highscores
-			f, err := os.Create("config/highscores.toml")
-			defer f.Close()
-			utils.LogError(err)
-
-			err = toml.NewEncoder(f).Order(toml.OrderPreserve).Indentation("    ").Encode(st.highscores)
-			utils.LogError(err)
+			var encoded strings.Builder
+			encoder := toml.NewEncoder(&encoded)
+			encoder.Indent = ""
+			utils.LogError(encoder.Encode(st.highscores))
+			utils.LogError(os.WriteFile("config/highscores.toml", []byte(encoded.String()), 0o666))
 
 			st.displayHighScores(world)
 		}
@@ -168,7 +165,7 @@ func (st *HighscoresState) displayHighScores(world w.World) bool {
 		difficultyText = "HARD"
 		scores = &st.highscores.Hard.Scores
 	default:
-		utils.LogError(fmt.Errorf("unknown difficulty: %v", st.difficulties[st.difficultySelection]))
+		utils.LogFatalf("unknown difficulty: %v", st.difficulties[st.difficultySelection])
 	}
 
 	// Sort scores

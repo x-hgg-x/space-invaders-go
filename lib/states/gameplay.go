@@ -67,7 +67,7 @@ func (st *GameplayState) OnStart(world w.World) {
 	case resources.DifficultyHard:
 		difficulty = "HARD"
 	default:
-		utils.LogError(fmt.Errorf("unknown difficulty: %v", st.game.Difficulty))
+		utils.LogFatalf("unknown difficulty: %v", st.game.Difficulty)
 	}
 	for iEntity := range difficultyEntity {
 		world.Components.Engine.Text.Get(difficultyEntity[iEntity]).(*ec.Text).Text = difficulty
