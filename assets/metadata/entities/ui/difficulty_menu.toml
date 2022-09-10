@@ -1,106 +1,106 @@
 [[entity]]
 
-    [entity.components.Text]
-    id = "cursor_easy"
-    text = "\u25ba"
-    font_face = { font = "hack", options.size = 60.0 }
-    color = [255, 255, 255, 255]
+[entity.components.Text]
+id = "cursor_easy"
+text = "\u25ba"
+font_face = { font = "hack", options.size = 60.0 }
+color = [255, 255, 255, 255]
 
-    [entity.components.UITransform]
-    translation = { x = 340, y = 550 }
-
-
-[[entity]]
-
-    [entity.components.Text]
-    id = "cursor_normal"
-    text = "\u25ba"
-    font_face = { font = "hack", options.size = 60.0 }
-    color = [255, 255, 255, 0]
-
-    [entity.components.UITransform]
-    translation = { x = 285, y = 400 }
+[entity.components.UITransform]
+translation = { x = 340, y = 550 }
 
 
 [[entity]]
 
-    [entity.components.Text]
-    id = "cursor_hard"
-    text = "\u25ba"
-    font_face = { font = "hack", options.size = 60.0 }
-    color = [255, 255, 255, 0]
+[entity.components.Text]
+id = "cursor_normal"
+text = "\u25ba"
+font_face = { font = "hack", options.size = 60.0 }
+color = [255, 255, 255, 0]
 
-    [entity.components.UITransform]
-    translation = { x = 340, y = 250 }
-
-
-[[entity]]
-
-    [entity.components.Text]
-    id = "easy"
-    text = "EASY"
-    font_face = { font = "joystix", options.size = 60.0 }
-    color = [255, 255, 255, 255]
-
-    [entity.components.UITransform]
-    translation = { x = 500, y = 550 }
+[entity.components.UITransform]
+translation = { x = 285, y = 400 }
 
 
 [[entity]]
 
-    [entity.components.SpriteRender]
-    fill = { width = 220, height = 60 }
+[entity.components.Text]
+id = "cursor_hard"
+text = "\u25ba"
+font_face = { font = "hack", options.size = 60.0 }
+color = [255, 255, 255, 0]
 
-    [entity.components.Transform]
-    translation = { x = 500.0, y = 550.0 }
-
-    [entity.components.MouseReactive]
-    id = "easy"
-
-
-[[entity]]
-
-    [entity.components.Text]
-    id = "normal"
-    text = "NORMAL"
-    font_face = { font = "joystix", options.size = 60.0 }
-    color = [255, 255, 255, 255]
-
-    [entity.components.UITransform]
-    translation = { x = 500, y = 400 }
+[entity.components.UITransform]
+translation = { x = 340, y = 250 }
 
 
 [[entity]]
 
-    [entity.components.SpriteRender]
-    fill = { width = 330, height = 60 }
+[entity.components.Text]
+id = "easy"
+text = "EASY"
+font_face = { font = "joystix", options.size = 60.0 }
+color = [255, 255, 255, 255]
 
-    [entity.components.Transform]
-    translation = { x = 500.0, y = 400.0 }
-
-    [entity.components.MouseReactive]
-    id = "normal"
-
-
-[[entity]]
-
-    [entity.components.Text]
-    id = "hard"
-    text = "HARD"
-    font_face = { font = "joystix", options.size = 60.0 }
-    color = [255, 255, 255, 255]
-
-    [entity.components.UITransform]
-    translation = { x = 500, y = 250 }
+[entity.components.UITransform]
+translation = { x = 500, y = 550 }
 
 
 [[entity]]
 
-    [entity.components.SpriteRender]
-    fill = { width = 220, height = 60 }
+[entity.components.SpriteRender]
+fill = { width = 220, height = 60 }
 
-    [entity.components.Transform]
-    translation = { x = 500.0, y = 250.0 }
+[entity.components.Transform]
+translation = { x = 500.0, y = 550.0 }
 
-    [entity.components.MouseReactive]
-    id = "hard"
+[entity.components.MouseReactive]
+id = "easy"
+
+
+[[entity]]
+
+[entity.components.Text]
+id = "normal"
+text = "NORMAL"
+font_face = { font = "joystix", options.size = 60.0 }
+color = [255, 255, 255, 255]
+
+[entity.components.UITransform]
+translation = { x = 500, y = 400 }
+
+
+[[entity]]
+
+[entity.components.SpriteRender]
+fill = { width = 330, height = 60 }
+
+[entity.components.Transform]
+translation = { x = 500.0, y = 400.0 }
+
+[entity.components.MouseReactive]
+id = "normal"
+
+
+[[entity]]
+
+[entity.components.Text]
+id = "hard"
+text = "HARD"
+font_face = { font = "joystix", options.size = 60.0 }
+color = [255, 255, 255, 255]
+
+[entity.components.UITransform]
+translation = { x = 500, y = 250 }
+
+
+[[entity]]
+
+[entity.components.SpriteRender]
+fill = { width = 220, height = 60 }
+
+[entity.components.Transform]
+translation = { x = 500.0, y = 250.0 }
+
+[entity.components.MouseReactive]
+id = "hard"

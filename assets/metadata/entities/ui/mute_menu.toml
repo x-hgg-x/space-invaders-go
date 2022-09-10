@@ -1,70 +1,70 @@
 [[entity]]
 
-    [entity.components.Text]
-    id = "cursor_play_sound"
-    text = "\u25ba"
-    font_face = { font = "hack", options.size = 60.0 }
-    color = [255, 255, 255, 255]
+[entity.components.Text]
+id = "cursor_play_sound"
+text = "\u25ba"
+font_face = { font = "hack", options.size = 60.0 }
+color = [255, 255, 255, 255]
 
-    [entity.components.UITransform]
-    translation = { x = 45, y = 500 }
-
-
-[[entity]]
-
-    [entity.components.Text]
-    id = "cursor_play_muted"
-    text = "\u25ba"
-    font_face = { font = "hack", options.size = 60.0 }
-    color = [255, 255, 255, 0]
-
-    [entity.components.UITransform]
-    translation = { x = 170, y = 300 }
+[entity.components.UITransform]
+translation = { x = 45, y = 500 }
 
 
 [[entity]]
 
-    [entity.components.Text]
-    id = "play_sound"
-    text = "PLAY WITH SOUND"
-    font_face = { font = "joystix", options.size = 60.0 }
-    color = [255, 255, 255, 255]
+[entity.components.Text]
+id = "cursor_play_muted"
+text = "\u25ba"
+font_face = { font = "hack", options.size = 60.0 }
+color = [255, 255, 255, 0]
 
-    [entity.components.UITransform]
-    translation = { x = 500, y = 500 }
-
-
-[[entity]]
-
-    [entity.components.SpriteRender]
-    fill = { width = 780, height = 60 }
-
-    [entity.components.Transform]
-    translation = { x = 500.0, y = 500.0 }
-
-    [entity.components.MouseReactive]
-    id = "play_sound"
+[entity.components.UITransform]
+translation = { x = 170, y = 300 }
 
 
 [[entity]]
 
-    [entity.components.Text]
-    id = "play_muted"
-    text = "PLAY MUTED"
-    font_face = { font = "joystix", options.size = 60.0 }
-    color = [255, 255, 255, 255]
+[entity.components.Text]
+id = "play_sound"
+text = "PLAY WITH SOUND"
+font_face = { font = "joystix", options.size = 60.0 }
+color = [255, 255, 255, 255]
 
-    [entity.components.UITransform]
-    translation = { x = 500, y = 300 }
+[entity.components.UITransform]
+translation = { x = 500, y = 500 }
 
 
 [[entity]]
 
-    [entity.components.SpriteRender]
-    fill = { width = 530, height = 60 }
+[entity.components.SpriteRender]
+fill = { width = 780, height = 60 }
 
-    [entity.components.Transform]
-    translation = { x = 500.0, y = 300.0 }
+[entity.components.Transform]
+translation = { x = 500.0, y = 500.0 }
 
-    [entity.components.MouseReactive]
-    id = "play_muted"
+[entity.components.MouseReactive]
+id = "play_sound"
+
+
+[[entity]]
+
+[entity.components.Text]
+id = "play_muted"
+text = "PLAY MUTED"
+font_face = { font = "joystix", options.size = 60.0 }
+color = [255, 255, 255, 255]
+
+[entity.components.UITransform]
+translation = { x = 500, y = 300 }
+
+
+[[entity]]
+
+[entity.components.SpriteRender]
+fill = { width = 530, height = 60 }
+
+[entity.components.Transform]
+translation = { x = 500.0, y = 300.0 }
+
+[entity.components.MouseReactive]
+id = "play_muted"

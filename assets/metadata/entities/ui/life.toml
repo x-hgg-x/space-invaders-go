@@ -1,11 +1,11 @@
 [[entity]]
 
-    [entity.components.Text]
-    id = "game_life"
-    text = "LIVES: 3"
-    font_face = { font = "joystix", options.size = 25.0 }
-    color = [255, 255, 255, 255]
+[entity.components.Text]
+id = "game_life"
+text = "LIVES: 3"
+font_face = { font = "joystix", options.size = 25.0 }
+color = [255, 255, 255, 255]
 
-    [entity.components.UITransform]
-    translation = { x = 990, y = 790 }
-    pivot = "TopRight"
+[entity.components.UITransform]
+translation = { x = 990, y = 790 }
+pivot = "TopRight"

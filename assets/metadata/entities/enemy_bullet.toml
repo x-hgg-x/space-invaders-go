@@ -1,21 +1,21 @@
 [[entity]]
 
-    [entity.components.SpriteRender]
-    sprite_sheet_name = "game"
-    sprite_number = 9
+[entity.components.SpriteRender]
+sprite_sheet_name = "game"
+sprite_number = 9
 
-    [entity.components.Transform]
-    depth = 0.4
+[entity.components.Transform]
+depth = 0.4
 
-    [entity.components.AnimationControl]
-    sprite_sheet_name = "game"
-    animation_name = "enemy_bullet"
-    end.type = "Loop"
+[entity.components.AnimationControl]
+sprite_sheet_name = "game"
+animation_name = "enemy_bullet"
+end.type = "Loop"
 
-    [entity.components.Enemy]
+[entity.components.Enemy]
 
-    [entity.components.Bullet]
-    width = 12.0
-    height = 48.0
-    velocity = -200.0
-    health = 500.0
+[entity.components.Bullet]
+width = 12.0
+height = 48.0
+velocity = -200.0
+health = 500.0

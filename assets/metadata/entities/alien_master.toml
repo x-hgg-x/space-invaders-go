@@ -1,21 +1,21 @@
 [[entity]]
 
-    [entity.components.SpriteRender]
-    sprite_sheet_name = "game"
-    sprite_number = 13
+[entity.components.SpriteRender]
+sprite_sheet_name = "game"
+sprite_number = 13
 
-    [entity.components.Transform]
-    translation.y = 760.0
+[entity.components.Transform]
+translation.y = 760.0
 
-    [entity.components.AnimationControl]
-    sprite_sheet_name = "game"
-    animation_name = "alien_master_loop"
-    end.type = "Loop"
+[entity.components.AnimationControl]
+sprite_sheet_name = "game"
+animation_name = "alien_master_loop"
+end.type = "Loop"
 
-    [entity.components.Enemy]
+[entity.components.Enemy]
 
-    [entity.components.Alien]
-    width = 96.0
-    height = 42.0
+[entity.components.Alien]
+width = 96.0
+height = 42.0
 
-    [entity.components.AlienMaster]
+[entity.components.AlienMaster]

@@ -1,17 +1,17 @@
 [[entity]]
 
-    [entity.components.SpriteRender]
-    sprite_sheet_name = "game"
-    sprite_number = 11
+[entity.components.SpriteRender]
+sprite_sheet_name = "game"
+sprite_number = 11
 
-    [entity.components.Transform]
-    translation.y = 82.0
-    depth = 0.5
+[entity.components.Transform]
+translation.y = 82.0
+depth = 0.5
 
-    [entity.components.Player]
+[entity.components.Player]
 
-    [entity.components.Bullet]
-    width = 6.0
-    height = 48.0
-    velocity = 450.0
-    health = 250.0
+[entity.components.Bullet]
+width = 6.0
+height = 48.0
+velocity = 450.0
+health = 250.0

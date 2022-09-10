@@ -1,118 +1,118 @@
 [[entity]]
 
-    [entity.components.Text]
-    id = "title"
-    text = "Space Invaders"
-    font_face = { font = "joystix", options.size = 75.0 }
-    color = [255, 255, 255, 255]
+[entity.components.Text]
+id = "title"
+text = "Space Invaders"
+font_face = { font = "joystix", options.size = 75.0 }
+color = [255, 255, 255, 255]
 
-    [entity.components.UITransform]
-    translation = { x = 500, y = 650 }
-
-
-[[entity]]
-
-    [entity.components.Text]
-    id = "cursor_new_game"
-    text = "\u25ba"
-    font_face = { font = "hack", options.size = 60.0 }
-    color = [255, 255, 255, 255]
-
-    [entity.components.UITransform]
-    translation = { x = 230, y = 450 }
+[entity.components.UITransform]
+translation = { x = 500, y = 650 }
 
 
 [[entity]]
 
-    [entity.components.Text]
-    id = "cursor_highscores"
-    text = "\u25ba"
-    font_face = { font = "hack", options.size = 60.0 }
-    color = [255, 255, 255, 255]
+[entity.components.Text]
+id = "cursor_new_game"
+text = "\u25ba"
+font_face = { font = "hack", options.size = 60.0 }
+color = [255, 255, 255, 255]
 
-    [entity.components.UITransform]
-    translation = { x = 180, y = 300 }
-
-
-[[entity]]
-
-    [entity.components.Text]
-    id = "cursor_exit"
-    text = "\u25ba"
-    font_face = { font = "hack", options.size = 60.0 }
-    color = [255, 255, 255, 0]
-
-    [entity.components.UITransform]
-    translation = { x = 330, y = 150 }
+[entity.components.UITransform]
+translation = { x = 230, y = 450 }
 
 
 [[entity]]
 
-    [entity.components.Text]
-    id = "new_game"
-    text = "NEW GAME"
-    font_face = { font = "joystix", options.size = 60.0 }
-    color = [255, 255, 255, 255]
+[entity.components.Text]
+id = "cursor_highscores"
+text = "\u25ba"
+font_face = { font = "hack", options.size = 60.0 }
+color = [255, 255, 255, 255]
 
-    [entity.components.UITransform]
-    translation = { x = 500, y = 450 }
-
-
-[[entity]]
-
-    [entity.components.SpriteRender]
-    fill = { width = 420, height = 60 }
-
-    [entity.components.Transform]
-    translation = { x = 500.0, y = 450.0 }
-
-    [entity.components.MouseReactive]
-    id = "new_game"
+[entity.components.UITransform]
+translation = { x = 180, y = 300 }
 
 
 [[entity]]
 
-    [entity.components.Text]
-    id = "highscores"
-    text = "HIGHSCORES"
-    font_face = { font = "joystix", options.size = 60.0 }
-    color = [255, 255, 255, 255]
+[entity.components.Text]
+id = "cursor_exit"
+text = "\u25ba"
+font_face = { font = "hack", options.size = 60.0 }
+color = [255, 255, 255, 0]
 
-    [entity.components.UITransform]
-    translation = { x = 500, y = 300 }
-
-
-[[entity]]
-
-    [entity.components.SpriteRender]
-    fill = { width = 520, height = 60 }
-
-    [entity.components.Transform]
-    translation = { x = 500.0, y = 300.0 }
-
-    [entity.components.MouseReactive]
-    id = "highscores"
+[entity.components.UITransform]
+translation = { x = 330, y = 150 }
 
 
 [[entity]]
 
-    [entity.components.Text]
-    id = "exit"
-    text = "EXIT"
-    font_face = { font = "joystix", options.size = 60.0 }
-    color = [255, 255, 255, 255]
+[entity.components.Text]
+id = "new_game"
+text = "NEW GAME"
+font_face = { font = "joystix", options.size = 60.0 }
+color = [255, 255, 255, 255]
 
-    [entity.components.UITransform]
-    translation = { x = 500, y = 150 }
+[entity.components.UITransform]
+translation = { x = 500, y = 450 }
 
 
 [[entity]]
 
-    [entity.components.SpriteRender]
-    fill = { width = 220, height = 60 }
+[entity.components.SpriteRender]
+fill = { width = 420, height = 60 }
 
-    [entity.components.Transform]
-    translation = { x = 500.0, y = 150.0 }
+[entity.components.Transform]
+translation = { x = 500.0, y = 450.0 }
 
-    [entity.components.MouseReactive]
-    id = "exit"
+[entity.components.MouseReactive]
+id = "new_game"
+
+
+[[entity]]
+
+[entity.components.Text]
+id = "highscores"
+text = "HIGHSCORES"
+font_face = { font = "joystix", options.size = 60.0 }
+color = [255, 255, 255, 255]
+
+[entity.components.UITransform]
+translation = { x = 500, y = 300 }
+
+
+[[entity]]
+
+[entity.components.SpriteRender]
+fill = { width = 520, height = 60 }
+
+[entity.components.Transform]
+translation = { x = 500.0, y = 300.0 }
+
+[entity.components.MouseReactive]
+id = "highscores"
+
+
+[[entity]]
+
+[entity.components.Text]
+id = "exit"
+text = "EXIT"
+font_face = { font = "joystix", options.size = 60.0 }
+color = [255, 255, 255, 255]
+
+[entity.components.UITransform]
+translation = { x = 500, y = 150 }
+
+
+[[entity]]
+
+[entity.components.SpriteRender]
+fill = { width = 220, height = 60 }
+
+[entity.components.Transform]
+translation = { x = 500.0, y = 150.0 }
+
+[entity.components.MouseReactive]
+id = "exit"
