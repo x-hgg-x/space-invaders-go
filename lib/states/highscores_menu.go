@@ -23,7 +23,12 @@ import (
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
 
-const highscoreNum = 9
+const (
+	highscoreNum = 9
+	maxAuthorLen = 6
+)
+
+var regexpForbiddenChars = regexp.MustCompile("[[:^alnum:]]")
 
 type highscore struct {
 	difficulty resources.Difficulty
@@ -61,6 +66,9 @@ func (st *HighscoresState) OnStart(world w.World) {
 
 	// Load highscores
 	toml.DecodeFile("config/highscores.toml", &st.highscores)
+	normalizeHighScores(&st.highscores.Easy)
+	normalizeHighScores(&st.highscores.Normal)
+	normalizeHighScores(&st.highscores.Hard)
 
 	if st.newScore != nil {
 		st.difficultySelection = find(st.difficulties, st.newScore.difficulty)
@@ -100,10 +108,9 @@ func (st *HighscoresState) Update(world w.World) states.Transition {
 	if st.newScore != nil {
 		// Set highscore author
 		// Get user input
-		re := regexp.MustCompile("[[:^alnum:]]")
-		st.newScore.author += strings.ToUpper(re.ReplaceAllLiteralString(string(ebiten.AppendInputChars(nil)), ""))
-		if len(st.newScore.author) > 6 {
-			st.newScore.author = st.newScore.author[:6]
+		st.newScore.author += strings.ToUpper(regexpForbiddenChars.ReplaceAllLiteralString(string(ebiten.AppendInputChars(nil)), ""))
+		if len(st.newScore.author) > maxAuthorLen {
+			st.newScore.author = st.newScore.author[:maxAuthorLen]
 		}
 		if inpututil.IsKeyJustPressed(ebiten.KeyBackspace) && len(st.newScore.author) > 0 {
 			st.newScore.author = st.newScore.author[:len(st.newScore.author)-1]
@@ -190,6 +197,10 @@ func (st *HighscoresState) displayHighScores(world w.World) bool {
 			st.newScore.position = position
 			st.newScore.highscore = &(*scores)[position]
 			newHighscore = true
+
+			if len(*scores) > highscoreNum {
+				*scores = (*scores)[:highscoreNum]
+			}
 		}
 	}
 
@@ -222,6 +233,19 @@ func (st *HighscoresState) displayHighScores(world w.World) bool {
 	}))
 
 	return newHighscore
+}
+
+func normalizeHighScores(t *resources.ScoreTable) {
+	if len(t.Scores) > highscoreNum {
+		t.Scores = t.Scores[:highscoreNum]
+	}
+
+	for i := range t.Scores {
+		t.Scores[i].Author = strings.ToUpper(regexpForbiddenChars.ReplaceAllLiteralString(t.Scores[i].Author, ""))
+		if len(t.Scores[i].Author) > maxAuthorLen {
+			t.Scores[i].Author = t.Scores[i].Author[:maxAuthorLen]
+		}
+	}
 }
 
 func find(slice []resources.Difficulty, x resources.Difficulty) int {
