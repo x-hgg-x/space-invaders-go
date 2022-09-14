@@ -18,8 +18,8 @@ import (
 )
 
 const (
-	windowWidth  = 1000
-	windowHeight = 800
+	gameWidth  = 1000
+	gameHeight = 800
 )
 
 type mainGame struct {
@@ -28,8 +28,7 @@ type mainGame struct {
 }
 
 func (game *mainGame) Layout(outsideWidth, outsideHeight int) (int, int) {
-	ebiten.SetWindowSize(outsideWidth, outsideHeight)
-	return windowWidth, windowHeight
+	return gameWidth, gameHeight
 }
 
 func (game *mainGame) Update() error {
@@ -45,7 +44,7 @@ func main() {
 	world := w.InitWorld(&gc.Components{})
 
 	// Init screen dimensions
-	world.Resources.ScreenDimensions = &er.ScreenDimensions{Width: windowWidth, Height: windowHeight}
+	world.Resources.ScreenDimensions = &er.ScreenDimensions{Width: gameWidth, Height: gameHeight}
 
 	// Load controls
 	axes := []string{gr.PlayerAxis}
@@ -89,7 +88,7 @@ func main() {
 	}
 
 	ebiten.SetWindowResizingMode(ebiten.WindowResizingModeEnabled)
-	ebiten.SetWindowSize(windowWidth, windowHeight)
+	ebiten.SetWindowSize(gameWidth, gameHeight)
 	ebiten.SetWindowTitle("Space Invaders")
 
 	utils.LogError(ebiten.RunGame(&mainGame{world, es.Init(&gs.MuteMenuState{}, world)}))
