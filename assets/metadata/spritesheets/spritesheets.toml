@@ -1,13 +1,13 @@
 [sprite_sheet.background]
-texture_image = "assets/textures/background.png"
+texture_image = "assets/lfs/textures/background.png"
 sprites = [{ x = 0, y = 0, width = 1000, height = 800 }]
 
 [sprite_sheet.bunker]
-texture_image = "assets/textures/bunker.png"
+texture_image = "assets/lfs/textures/bunker.png"
 sprites = [{ x = 0, y = 0, width = 168, height = 120 }]
 
 [sprite_sheet.game]
-texture_image = "assets/textures/game.png"
+texture_image = "assets/lfs/textures/game.png"
 sprites = [
     # Alien 1
     { x = 0,   y = 0,   width = 72, height = 48 }, # Sprite 0

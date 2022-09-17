@@ -11,10 +11,10 @@ import (
 func LoadSounds(world w.World, sound bool) {
 	world.Resources.AudioContext = loader.InitAudio(44100)
 	audioPlayers := make(map[string]*audio.Player)
-	audioPlayers["music"] = loader.LoadAudio(world.Resources.AudioContext, "assets/audio/Wave After Wave!.ogg")
-	audioPlayers["shoot"] = loader.LoadAudio(world.Resources.AudioContext, "assets/audio/shoot.wav")
-	audioPlayers["killed"] = loader.LoadAudio(world.Resources.AudioContext, "assets/audio/killed.wav")
-	audioPlayers["explosion"] = loader.LoadAudio(world.Resources.AudioContext, "assets/audio/explosion.wav")
+	audioPlayers["music"] = loader.LoadAudio(world.Resources.AudioContext, "assets/lfs/audio/Wave After Wave!.ogg")
+	audioPlayers["shoot"] = loader.LoadAudio(world.Resources.AudioContext, "assets/lfs/audio/shoot.wav")
+	audioPlayers["killed"] = loader.LoadAudio(world.Resources.AudioContext, "assets/lfs/audio/killed.wav")
+	audioPlayers["explosion"] = loader.LoadAudio(world.Resources.AudioContext, "assets/lfs/audio/explosion.wav")
 	world.Resources.AudioPlayers = &audioPlayers
 
 	audioPlayers["music"].Play()
