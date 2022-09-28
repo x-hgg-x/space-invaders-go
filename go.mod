@@ -6,7 +6,7 @@ require (
 	github.com/BurntSushi/toml v1.2.0
 	github.com/hajimehoshi/ebiten/v2 v2.4.2
 	github.com/x-hgg-x/goecs/v2 v2.0.5
-	github.com/x-hgg-x/goecsengine v0.10.1
+	github.com/x-hgg-x/goecsengine v0.11.0
 )
 
 require (
