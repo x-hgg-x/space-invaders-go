@@ -27,7 +27,7 @@ translation = { x = 290, y = 550 }
 id = "cursor_main_menu"
 text = "\u25ba"
 font_face = { font = "hack", options.size = 60.0 }
-color = [255, 255, 255, 0]
+color = [255, 255, 255, 255]
 
 [entity.components.UITransform]
 translation = { x = 210, y = 400 }
@@ -39,7 +39,7 @@ translation = { x = 210, y = 400 }
 id = "cursor_exit"
 text = "\u25ba"
 font_face = { font = "hack", options.size = 60.0 }
-color = [255, 255, 255, 0]
+color = [255, 255, 255, 255]
 
 [entity.components.UITransform]
 translation = { x = 340, y = 250 }

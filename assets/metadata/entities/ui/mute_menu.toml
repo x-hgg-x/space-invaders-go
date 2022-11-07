@@ -16,7 +16,7 @@ translation = { x = 45, y = 500 }
 id = "cursor_play_muted"
 text = "\u25ba"
 font_face = { font = "hack", options.size = 60.0 }
-color = [255, 255, 255, 0]
+color = [255, 255, 255, 255]
 
 [entity.components.UITransform]
 translation = { x = 170, y = 300 }
