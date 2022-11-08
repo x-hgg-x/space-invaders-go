@@ -6,7 +6,6 @@ import (
 	"github.com/x-hgg-x/space-invaders-go/lib/resources"
 	g "github.com/x-hgg-x/space-invaders-go/lib/systems"
 
-	ecs "github.com/x-hgg-x/goecs/v2"
 	"github.com/x-hgg-x/goecsengine/loader"
 	"github.com/x-hgg-x/goecsengine/states"
 	w "github.com/x-hgg-x/goecsengine/world"
@@ -17,8 +16,7 @@ import (
 
 // DifficultyMenuState is the difficulty menu state
 type DifficultyMenuState struct {
-	difficultyMenu []ecs.Entity
-	selection      int
+	selection int
 }
 
 //
@@ -69,8 +67,8 @@ func (st *DifficultyMenuState) OnResume(world w.World) {}
 // OnStart method
 func (st *DifficultyMenuState) OnStart(world w.World) {
 	prefabs := world.Resources.Prefabs.(*resources.Prefabs)
-	st.difficultyMenu = append(st.difficultyMenu, loader.AddEntities(world, prefabs.Game.Background)...)
-	st.difficultyMenu = append(st.difficultyMenu, loader.AddEntities(world, prefabs.Menu.DifficultyMenu)...)
+	loader.AddEntities(world, prefabs.Game.Background)
+	loader.AddEntities(world, prefabs.Menu.DifficultyMenu)
 
 	// Default difficulty is normal
 	st.setSelection(1)
@@ -78,7 +76,7 @@ func (st *DifficultyMenuState) OnStart(world w.World) {
 
 // OnStop method
 func (st *DifficultyMenuState) OnStop(world w.World) {
-	world.Manager.DeleteEntities(st.difficultyMenu...)
+	world.Manager.DeleteAllEntities()
 }
 
 // Update method

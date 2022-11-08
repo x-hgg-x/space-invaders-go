@@ -5,7 +5,6 @@ import (
 
 	"github.com/x-hgg-x/space-invaders-go/lib/resources"
 
-	ecs "github.com/x-hgg-x/goecs/v2"
 	"github.com/x-hgg-x/goecsengine/loader"
 	"github.com/x-hgg-x/goecsengine/states"
 	w "github.com/x-hgg-x/goecsengine/world"
@@ -16,7 +15,6 @@ import (
 
 // MuteMenuState is the mute menu state
 type MuteMenuState struct {
-	muteMenu  []ecs.Entity
 	selection int
 }
 
@@ -65,12 +63,12 @@ func (st *MuteMenuState) OnResume(world w.World) {}
 // OnStart method
 func (st *MuteMenuState) OnStart(world w.World) {
 	prefabs := world.Resources.Prefabs.(*resources.Prefabs)
-	st.muteMenu = append(st.muteMenu, loader.AddEntities(world, prefabs.Menu.MuteMenu)...)
+	loader.AddEntities(world, prefabs.Menu.MuteMenu)
 }
 
 // OnStop method
 func (st *MuteMenuState) OnStop(world w.World) {
-	world.Manager.DeleteEntities(st.muteMenu...)
+	world.Manager.DeleteAllEntities()
 }
 
 // Update method
