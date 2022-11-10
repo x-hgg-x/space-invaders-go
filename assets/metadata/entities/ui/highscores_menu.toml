@@ -29,7 +29,8 @@ font_face = { font = "joystix", options.size = 60.0 }
 color = [255, 255, 255, 0]
 
 [entity.components.UITransform]
-translation = { x = 500, y = 680 }
+translation = { x = 500, y = 705 }
+pivot = "TopMiddle"
 
 
 [[entity]]
@@ -41,7 +42,8 @@ font_face = { font = "joystix", options.size = 60.0 }
 color = [255, 255, 255, 0]
 
 [entity.components.UITransform]
-translation = { x = 500, y = 600 }
+translation = { x = 500, y = 625 }
+pivot = "TopMiddle"
 
 
 [[entity]]
@@ -53,7 +55,8 @@ font_face = { font = "joystix", options.size = 60.0 }
 color = [255, 255, 255, 0]
 
 [entity.components.UITransform]
-translation = { x = 500, y = 520 }
+translation = { x = 500, y = 545 }
+pivot = "TopMiddle"
 
 
 [[entity]]
@@ -65,7 +68,8 @@ font_face = { font = "joystix", options.size = 60.0 }
 color = [255, 255, 255, 0]
 
 [entity.components.UITransform]
-translation = { x = 500, y = 440 }
+translation = { x = 500, y = 465 }
+pivot = "TopMiddle"
 
 
 [[entity]]
@@ -77,7 +81,8 @@ font_face = { font = "joystix", options.size = 60.0 }
 color = [255, 255, 255, 0]
 
 [entity.components.UITransform]
-translation = { x = 500, y = 360 }
+translation = { x = 500, y = 385 }
+pivot = "TopMiddle"
 
 
 [[entity]]
@@ -89,7 +94,8 @@ font_face = { font = "joystix", options.size = 60.0 }
 color = [255, 255, 255, 0]
 
 [entity.components.UITransform]
-translation = { x = 500, y = 280 }
+translation = { x = 500, y = 305 }
+pivot = "TopMiddle"
 
 
 [[entity]]
@@ -101,7 +107,8 @@ font_face = { font = "joystix", options.size = 60.0 }
 color = [255, 255, 255, 0]
 
 [entity.components.UITransform]
-translation = { x = 500, y = 200 }
+translation = { x = 500, y = 225 }
+pivot = "TopMiddle"
 
 
 [[entity]]
@@ -113,7 +120,8 @@ font_face = { font = "joystix", options.size = 60.0 }
 color = [255, 255, 255, 0]
 
 [entity.components.UITransform]
-translation = { x = 500, y = 120 }
+translation = { x = 500, y = 145 }
+pivot = "TopMiddle"
 
 
 [[entity]]
@@ -125,7 +133,8 @@ font_face = { font = "joystix", options.size = 60.0 }
 color = [255, 255, 255, 0]
 
 [entity.components.UITransform]
-translation = { x = 500, y = 40 }
+translation = { x = 500, y = 65 }
+pivot = "TopMiddle"
 
 
 [[entity]]
