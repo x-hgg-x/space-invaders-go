@@ -120,7 +120,8 @@ func (st *HighscoresState) Update(world w.World) states.Transition {
 		world.Manager.Join(world.Components.Engine.Text, world.Components.Engine.UITransform).Visit(ecs.Visit(func(entity ecs.Entity) {
 			text := world.Components.Engine.Text.Get(entity).(*ec.Text)
 			if text.ID == fmt.Sprintf("score%d", st.newScore.position+1) {
-				text.Text = fmt.Sprintf("%d. %-6s %5d", st.newScore.position+1, st.newScore.author, st.newScore.score)
+				padding := strings.Repeat("_", maxAuthorLen-len(st.newScore.author))
+				text.Text = fmt.Sprintf("%d. %s%s %5d", st.newScore.position+1, st.newScore.author, padding, st.newScore.score)
 			}
 		}))
 
